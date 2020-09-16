@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Kyslik\ColumnSortable\Sortable;
 
 /**
  * Class ArticleCategory
@@ -16,14 +17,13 @@ use Eloquent as Model;
  */
 class ArticleCategory extends Model
 {
+    use Sortable;
 
     public $table = 'article_categories';
-    
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
 
+    public $timestamps = false;
 
-
+    public $sortable = ['title', 'alias'];
 
     public $fillable = [
         'title',

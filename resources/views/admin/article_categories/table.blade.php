@@ -2,8 +2,8 @@
     <table class="table" id="articleCategories-table">
         <thead>
             <tr>
-                <th>Title</th>
-        <th>Alias</th>
+                <th>@sortablelink('title')</th>
+                <th>@sortablelink('alias')</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -11,7 +11,7 @@
         @foreach($articleCategories as $articleCategory)
             <tr>
                 <td>{{ $articleCategory->title }}</td>
-            <td>{{ $articleCategory->alias }}</td>
+                <td>{{ $articleCategory->alias }}</td>
                 <td>
                     {!! Form::open(['route' => ['admin.article-categories.destroy', $articleCategory->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -25,4 +25,6 @@
         @endforeach
         </tbody>
     </table>
+
+    {!! $articleCategories->appends(\Request::except('page'))->render() !!}
 </div>

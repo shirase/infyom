@@ -29,7 +29,7 @@ class ArticleCategoryController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $articleCategories = $this->articleCategoryRepository->all();
+        $articleCategories = $this->articleCategoryRepository->paginate(2);
 
         return view('admin.article_categories.index')
             ->with('articleCategories', $articleCategories);
@@ -60,7 +60,7 @@ class ArticleCategoryController extends AppBaseController
 
         Flash::success('Article Category saved successfully.');
 
-        return redirect(route('admin.articleCategories.index'));
+        return redirect(route('admin.article-categories.index'));
     }
 
     /**
@@ -97,7 +97,7 @@ class ArticleCategoryController extends AppBaseController
         if (empty($articleCategory)) {
             Flash::error('Article Category not found');
 
-            return redirect(route('admin.articleCategories.index'));
+            return redirect(route('admin.article-categories.index'));
         }
 
         return view('admin.article_categories.edit')->with('articleCategory', $articleCategory);
@@ -118,14 +118,14 @@ class ArticleCategoryController extends AppBaseController
         if (empty($articleCategory)) {
             Flash::error('Article Category not found');
 
-            return redirect(route('admin.articleCategories.index'));
+            return redirect(route('admin.article-categories.index'));
         }
 
         $articleCategory = $this->articleCategoryRepository->update($request->all(), $id);
 
         Flash::success('Article Category updated successfully.');
 
-        return redirect(route('admin.articleCategories.index'));
+        return redirect(route('admin.article-categories.index'));
     }
 
     /**
@@ -144,13 +144,13 @@ class ArticleCategoryController extends AppBaseController
         if (empty($articleCategory)) {
             Flash::error('Article Category not found');
 
-            return redirect(route('admin.articleCategories.index'));
+            return redirect(route('admin.article-categories.index'));
         }
 
         $this->articleCategoryRepository->delete($id);
 
         Flash::success('Article Category deleted successfully.');
 
-        return redirect(route('admin.articleCategories.index'));
+        return redirect(route('admin.article-categories.index'));
     }
 }
