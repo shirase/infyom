@@ -19,15 +19,18 @@ return [
 
         'repository'        => app_path('Repositories/'),
 
-        'routes'            => base_path('routes/web.php'),
+        //'routes'            => base_path('routes/web.php'),
+        'routes'            => base_path('routes/admin.php'),
 
         'api_routes'        => base_path('routes/api.php'),
 
-        'request'           => app_path('Http/Requests/'),
+        //'request'           => app_path('Http/Requests/'),
+        'request'           => app_path('Http/Requests/Admin/'),
 
         'api_request'       => app_path('Http/Requests/API/'),
 
-        'controller'        => app_path('Http/Controllers/'),
+        //'controller'        => app_path('Http/Controllers/'),
+        'controller'        => app_path('Http/Controllers/Admin/'),
 
         'api_controller'    => app_path('Http/Controllers/API/'),
 
@@ -37,7 +40,8 @@ return [
 
         'tests'             => base_path('tests/'),
 
-        'views'             => resource_path('views/'),
+        //'views'             => resource_path('views/'),
+        'views'             => resource_path('views/admin/'),
 
         'schema_files'      => resource_path('model_schemas/'),
 
@@ -69,11 +73,13 @@ return [
 
         'repository'        => 'App\Repositories',
 
-        'controller'        => 'App\Http\Controllers',
+        //'controller'        => 'App\Http\Controllers',
+        'controller'        => 'App\Http\Controllers\Admin',
 
         'api_controller'    => 'App\Http\Controllers\API',
 
-        'request'           => 'App\Http\Requests',
+        //'request'           => 'App\Http\Requests',
+        'request'           => 'App\Http\Requests\Admin',
 
         'api_request'       => 'App\Http\Requests\API',
 
@@ -122,7 +128,7 @@ return [
 
     'options' => [
 
-        'softDelete' => true,
+        'softDelete' => false,
 
         'save_schema_file' => true,
 
@@ -144,11 +150,11 @@ return [
 
     'prefixes' => [
 
-        'route' => '',  // using admin will create route('admin.?.index') type routes
+        'route' => 'admin',  // using admin will create route('admin.?.index') type routes
 
         'path' => '',
 
-        'view' => '',  // using backend will create return view('backend.?.index') type the backend views directory
+        'view' => 'admin',  // using backend will create return view('backend.?.index') type the backend views directory
 
         'public' => '',
     ],
@@ -170,7 +176,7 @@ return [
 
         'menu'          => [
 
-            'enabled'       => true,
+            'enabled'       => false,
 
             'menu_file'     => 'layouts/menu.blade.php',
         ],
