@@ -29,7 +29,7 @@ class ArticleCategoryController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $articleCategories = $this->articleCategoryRepository->allQuery()->sortable('title')->paginate(2);
+        $articleCategories = $this->articleCategoryRepository->paginate(20);
 
         return view('admin.article_categories.index')
             ->with('articleCategories', $articleCategories);

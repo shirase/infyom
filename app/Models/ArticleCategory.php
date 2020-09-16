@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Builder;
 use Kyslik\ColumnSortable\Sortable;
 
 /**
@@ -29,6 +30,15 @@ class ArticleCategory extends Model
         'title',
         'alias'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->sortable('title');
+        });
+    }
 
     /**
      * The attributes that should be casted to native types.
