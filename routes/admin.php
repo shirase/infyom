@@ -8,3 +8,6 @@ Route::get('/', function () {
     return view('admin::welcome');
 });
 
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('pages', 'PageController', ["as" => 'admin']);
+});
