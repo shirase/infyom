@@ -7,7 +7,7 @@ use Eloquent as Model;
 /**
  * Class Page
  * @package App\Models
- * @version September 16, 2020, 12:30 pm UTC
+ * @version September 16, 2020, 12:56 pm UTC
  *
  * @property string $name
  * @property string $alias
