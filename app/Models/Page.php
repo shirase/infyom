@@ -7,10 +7,12 @@ use Eloquent as Model;
 /**
  * Class Page
  * @package App\Models
- * @version September 16, 2020, 12:56 pm UTC
+ * @version September 16, 2020, 1:41 pm UTC
  *
- * @property string $name
+ * @property string $title
  * @property string $alias
+ * @property string $body
+ * @property boolean $active
  */
 class Page extends Model
 {
@@ -24,8 +26,10 @@ class Page extends Model
 
 
     public $fillable = [
-        'name',
-        'alias'
+        'title',
+        'alias',
+        'body',
+        'active'
     ];
 
     /**
@@ -35,8 +39,10 @@ class Page extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string',
-        'alias' => 'string'
+        'title' => 'string',
+        'alias' => 'string',
+        'body' => 'string',
+        'active' => 'boolean'
     ];
 
     /**
@@ -45,7 +51,8 @@ class Page extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required'
+        'title' => 'required',
+        'active' => 'required'
     ];
 
     

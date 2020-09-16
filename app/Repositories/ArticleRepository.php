@@ -2,24 +2,27 @@
 
 namespace App\Repositories;
 
-use App\Models\Page;
+use App\Models\Article;
 use App\Repositories\BaseRepository;
 
 /**
- * Class PageRepository
+ * Class ArticleRepository
  * @package App\Repositories
- * @version September 16, 2020, 1:41 pm UTC
+ * @version September 16, 2020, 1:42 pm UTC
 */
 
-class PageRepository extends BaseRepository
+class ArticleRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
+        'publish_at',
         'title',
         'alias',
+        'description',
         'body',
+        'category_id',
         'active'
     ];
 
@@ -38,6 +41,6 @@ class PageRepository extends BaseRepository
      **/
     public function model()
     {
-        return Page::class;
+        return Article::class;
     }
 }

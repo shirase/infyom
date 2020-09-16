@@ -1,7 +1,7 @@
-<!-- Name Field -->
+<!-- Title Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    {!! Form::label('title', 'Title:') !!}
+    {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Alias Field -->
@@ -9,6 +9,22 @@
     {!! Form::label('alias', 'Alias:') !!}
     {!! Form::text('alias', null, ['class' => 'form-control']) !!}
 </div>
+
+<!-- Body Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('body', 'Body:') !!}
+    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Active Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('active', 'Active:') !!}
+    <label class="checkbox-inline">
+        {!! Form::hidden('active', 0) !!}
+        {!! Form::checkbox('active', '1', null) !!}
+    </label>
+</div>
+
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

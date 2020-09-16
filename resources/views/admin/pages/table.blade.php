@@ -2,16 +2,20 @@
     <table class="table" id="pages-table">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Title</th>
         <th>Alias</th>
+        <th>Body</th>
+        <th>Active</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($pages as $page)
             <tr>
-                <td>{{ $page->name }}</td>
+                <td>{{ $page->title }}</td>
             <td>{{ $page->alias }}</td>
+            <td>{{ $page->body }}</td>
+            <td>{{ $page->active }}</td>
                 <td>
                     {!! Form::open(['route' => ['admin.pages.destroy', $page->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

@@ -48,8 +48,20 @@
         "inView": false
     },
     {
+        "name": "publish_at",
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
         "name": "title",
-        "dbType": "string,100",
+        "dbType": "string,200",
         "htmlType": "text",
         "validations": "required",
         "searchable": true,
@@ -61,7 +73,19 @@
     },
     {
         "name": "alias",
-        "dbType": "string,100:nullable",
+        "dbType": "string,200:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "description",
+        "dbType": "string,1000:nullable",
         "htmlType": "text",
         "validations": null,
         "searchable": true,
@@ -84,6 +108,18 @@
         "inView": true
     },
     {
+        "name": "category_id",
+        "dbType": "integer,false,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
         "name": "active",
         "dbType": "boolean",
         "htmlType": "checkbox,1",
@@ -94,5 +130,13 @@
         "inForm": true,
         "inIndex": true,
         "inView": true
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,ArticleCategory,category_id"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,ArticleCategory,articles_categories"
     }
 ]
