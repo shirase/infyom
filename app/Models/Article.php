@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Eloquent as Model;
 use Fico7489\Laravel\EloquentJoin\Traits\EloquentJoin;
 
@@ -19,6 +20,7 @@ use Fico7489\Laravel\EloquentJoin\Traits\EloquentJoin;
  * @property string $body
  * @property integer $category_id
  * @property boolean $active
+ * @property Carbon $created_at
  */
 class Article extends Model
 {

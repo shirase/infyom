@@ -22,6 +22,9 @@ class ArticleDataTable extends DataTable
         $dataTable->addColumn('category_name', function (Article $model) {
             return $model->category->title ?? '';
         });
+        $dataTable->addColumn('created_at', function (Article $model) {
+            return $model->created_at->format('d.m.Y H:i:s');
+        });
         return $dataTable->addColumn('action', 'admin.articles.datatables_actions');
     }
 
