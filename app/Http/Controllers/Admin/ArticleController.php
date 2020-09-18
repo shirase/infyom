@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\ArticleDataTable;
+use App\Http\Requests\Admin;
 use App\Http\Requests\Admin\CreateArticleRequest;
 use App\Http\Requests\Admin\UpdateArticleRequest;
+use App\Models\Article;
 use App\Repositories\ArticleRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
+use App\Http\Controllers\AppBaseController;
 use Response;
 
 class ArticleController extends AppBaseController
@@ -23,16 +25,12 @@ class ArticleController extends AppBaseController
     /**
      * Display a listing of the Article.
      *
-     * @param Request $request
-     *
+     * @param ArticleDataTable $articleDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(ArticleDataTable $articleDataTable, Article $article)
     {
-        $articles = $this->articleRepository->all();
-
-        return view('admin.articles.index')
-            ->with('articles', $articles);
+        return $articleDataTable->render('admin.articles.index');
     }
 
     /**
@@ -66,7 +64,7 @@ class ArticleController extends AppBaseController
     /**
      * Display the specified Article.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -86,7 +84,7 @@ class ArticleController extends AppBaseController
     /**
      * Show the form for editing the specified Article.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -106,7 +104,7 @@ class ArticleController extends AppBaseController
     /**
      * Update the specified Article in storage.
      *
-     * @param int $id
+     * @param  int              $id
      * @param UpdateArticleRequest $request
      *
      * @return Response
@@ -131,9 +129,7 @@ class ArticleController extends AppBaseController
     /**
      * Remove the specified Article from storage.
      *
-     * @param int $id
-     *
-     * @throws \Exception
+     * @param  int $id
      *
      * @return Response
      */

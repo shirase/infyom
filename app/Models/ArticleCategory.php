@@ -31,15 +31,6 @@ class ArticleCategory extends Model
         'alias'
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope('order', function (Builder $builder) {
-            $builder->sortable('title');
-        });
-    }
-
     /**
      * The attributes that should be casted to native types.
      *

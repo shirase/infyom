@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Fico7489\Laravel\EloquentJoin\Traits\EloquentJoin;
 
 /**
  * Class Article
  * @package App\Models
- * @version September 16, 2020, 1:42 pm UTC
+ * @version September 18, 2020, 10:21 am UTC
  *
  * @property \App\Models\ArticleCategory $category
- * @property \Illuminate\Database\Eloquent\Collection $articleCategory1s
+ * @property \Illuminate\Database\Eloquent\Collection $articleCategories
  * @property string|\Carbon\Carbon $publish_at
  * @property string $title
  * @property string $alias
@@ -21,14 +22,10 @@ use Eloquent as Model;
  */
 class Article extends Model
 {
-
     public $table = 'articles';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
-
-
-
 
     public $fillable = [
         'publish_at',
@@ -77,7 +74,7 @@ class Article extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
-    public function articleCategory1s()
+    public function articleCategories()
     {
         return $this->belongsToMany(\App\Models\ArticleCategory::class, 'articles_categories');
     }
