@@ -30,6 +30,7 @@ class Article extends Model
     const UPDATED_AT = 'updated_at';
 
     public $fillable = [
+        'created_at',
         'publish_at',
         'title',
         'alias',
