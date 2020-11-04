@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Kalnoy\Nestedset\NodeTrait;
 
 /**
  * Class Page
@@ -16,9 +17,10 @@ use Eloquent as Model;
  */
 class Page extends Model
 {
+    use NodeTrait;
 
     public $table = 'pages';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -55,5 +57,5 @@ class Page extends Model
         'active' => 'required'
     ];
 
-    
+
 }
