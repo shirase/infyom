@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin::layouts.app')
 
 @section('content')
     <section class="content-header">
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
 @endsection

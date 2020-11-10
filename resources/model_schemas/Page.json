@@ -1,7 +1,7 @@
 [
     {
         "name": "id",
-        "dbType": "integer,true,true",
+        "dbType": "bigInteger,true,true",
         "htmlType": null,
         "validations": null,
         "searchable": false,
@@ -36,20 +36,44 @@
         "inView": false
     },
     {
-        "name": "deleted_at",
-        "dbType": "datetime:nullable",
-        "htmlType": "date",
-        "validations": null,
-        "searchable": false,
-        "fillable": false,
+        "name": "_lft",
+        "dbType": "integer,false,true",
+        "htmlType": null,
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
         "primary": false,
-        "inForm": false,
-        "inIndex": false,
-        "inView": false
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "_rgt",
+        "dbType": "integer,false,true",
+        "htmlType": null,
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "parent_id",
+        "dbType": "integer,false,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "title",
-        "dbType": "string,100",
+        "dbType": "string,255",
         "htmlType": "text",
         "validations": "required",
         "searchable": true,
@@ -60,10 +84,22 @@
         "inView": true
     },
     {
-        "name": "alias",
-        "dbType": "string,100:nullable",
+        "name": "slug",
+        "dbType": "string,255:nullable",
         "htmlType": "text",
         "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "status",
+        "dbType": "boolean",
+        "htmlType": "checkbox,1",
+        "validations": "required",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -73,21 +109,9 @@
     },
     {
         "name": "body",
-        "dbType": "text,65535:nullable",
+        "dbType": "text:nullable",
         "htmlType": "textarea",
         "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true,
-        "inView": true
-    },
-    {
-        "name": "active",
-        "dbType": "boolean",
-        "htmlType": "checkbox,1",
-        "validations": "required",
         "searchable": true,
         "fillable": true,
         "primary": false,

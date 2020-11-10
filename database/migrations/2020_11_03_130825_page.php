@@ -13,7 +13,7 @@ class Page extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->nestedSet();

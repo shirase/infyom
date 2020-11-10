@@ -2,36 +2,58 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 use Kalnoy\Nestedset\NodeTrait;
 
 /**
  * Class Page
  * @package App\Models
- * @version September 16, 2020, 1:41 pm UTC
+ * @version November 10, 2020, 12:34 pm UTC
  *
+ * @property integer $_lft
+ * @property integer $_rgt
+ * @property integer $parent_id
  * @property string $title
- * @property string $alias
+ * @property string $slug
+ * @property boolean $status
  * @property string $body
- * @property boolean $active
  */
 class Page extends Model
 {
-    use NodeTrait;
+    use Sluggable, NodeTrait {
+        NodeTrait::replicate as replicateNode;
+        Sluggable::replicate as replicateSlug;
+    }
+
+    public function replicate(array $except = null)
+    {
+        $instance = $this->replicateNode($except);
+        (new SlugService())->slug($instance, true);
+
+        return $instance;
+    }
 
     public $table = 'pages';
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
-
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public $fillable = [
         'title',
-        'alias',
-        'body',
-        'active'
+        'slug',
+        'status',
+        'body'
     ];
 
     /**
@@ -41,10 +63,11 @@ class Page extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'parent_id' => 'integer',
         'title' => 'string',
-        'alias' => 'string',
-        'body' => 'string',
-        'active' => 'boolean'
+        'slug' => 'string',
+        'status' => 'boolean',
+        'body' => 'string'
     ];
 
     /**
@@ -54,8 +77,6 @@ class Page extends Model
      */
     public static $rules = [
         'title' => 'required',
-        'active' => 'required'
+        'status' => 'required'
     ];
-
-
 }

@@ -3,9 +3,9 @@
         <thead>
             <tr>
                 <th>Title</th>
-        <th>Alias</th>
-        <th>Body</th>
-        <th>Active</th>
+                <th>Slug</th>
+                <th>Status</th>
+                <th>Body</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -13,9 +13,9 @@
         @foreach($pages as $page)
             <tr>
                 <td>{{ $page->title }}</td>
-            <td>{{ $page->alias }}</td>
-            <td>{{ $page->body }}</td>
-            <td>{{ $page->active }}</td>
+                <td>{{ $page->slug }}</td>
+                <td>{{ $page->status }}</td>
+
                 <td>
                     {!! Form::open(['route' => ['admin.pages.destroy', $page->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
