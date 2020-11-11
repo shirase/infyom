@@ -22,7 +22,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            @include('layouts.menu')
+            @include('admin::layouts.menu')
         </ul>
         <!-- /.sidebar-menu -->
     </section>
