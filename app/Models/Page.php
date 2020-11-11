@@ -50,6 +50,7 @@ class Page extends Model
     }
 
     public $fillable = [
+        'parent_id',
         'title',
         'slug',
         'status',
