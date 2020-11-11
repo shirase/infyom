@@ -12,8 +12,6 @@ use Kalnoy\Nestedset\NodeTrait;
  * @package App\Models
  * @version November 10, 2020, 12:34 pm UTC
  *
- * @property integer $_lft
- * @property integer $_rgt
  * @property integer $parent_id
  * @property string $title
  * @property string $slug
@@ -78,6 +76,5 @@ class Page extends Model
      */
     public static $rules = [
         'title' => 'required',
-        'status' => 'required'
     ];
 }

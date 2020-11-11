@@ -137,7 +137,7 @@ return [
 
         'repository_pattern' => true,
 
-        'excluded_fields' => ['id'], // Array of columns that doesn't required while creating module
+        'excluded_fields' => ['id', '_lft', '_rgt'], // Array of columns that doesn't required while creating module
     ],
 
     /*
