@@ -129,7 +129,7 @@ return [
 
         'softDelete' => false,
 
-        'save_schema_file' => true,
+        'save_schema_file' => false,
 
         'localized' => false,
 
