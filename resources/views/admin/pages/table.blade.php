@@ -2,17 +2,24 @@
     <table class="table" id="pages-table">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Title</th>
                 <th>Slug</th>
                 <th>Status</th>
-                <th>Body</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($pages as $page)
+            <?php /** @var \App\Models\Page $page */ ?>
             <tr>
-                <td>{{ $page->title }}</td>
+                <td>{{ $page->id }}</td>
+                <td>
+                    @foreach($page->getAncestors() as $ancestor)
+                        -
+                    @endforeach
+                    {{ $page->title }}
+                </td>
                 <td>{{ $page->slug }}</td>
                 <td>{{ $page->status }}</td>
 

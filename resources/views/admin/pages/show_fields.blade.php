@@ -1,13 +1,7 @@
-<!--  Lft Field -->
+<!-- Id Field -->
 <div class="form-group">
-    {!! Form::label('_lft', ' Lft:') !!}
-    <p>{{ $page->_lft }}</p>
-</div>
-
-<!--  Rgt Field -->
-<div class="form-group">
-    {!! Form::label('_rgt', ' Rgt:') !!}
-    <p>{{ $page->_rgt }}</p>
+    {!! Form::label('id', 'Id:') !!}
+    <p>{{ $page->id }}</p>
 </div>
 
 <!-- Parent Id Field -->

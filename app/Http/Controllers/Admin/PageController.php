@@ -8,6 +8,7 @@ use App\Repositories\PageRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Kalnoy\Nestedset\NestedSet;
 use Response;
 
 class PageController extends AppBaseController
@@ -29,7 +30,7 @@ class PageController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $pages = $this->pageRepository->all();
+        $pages = $this->pageRepository->allQuery()->orderBy(NestedSet::LFT)->get();
 
         return view('admin.pages.index')
             ->with('pages', $pages);
