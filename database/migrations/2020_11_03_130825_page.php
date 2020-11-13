@@ -21,6 +21,7 @@ class Page extends Migration
             $table->string('slug')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->longText('body')->nullable();
+            $table->string('type', 50)->nullable();
         });
     }
 
@@ -31,8 +32,6 @@ class Page extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('pages');
     }
 }

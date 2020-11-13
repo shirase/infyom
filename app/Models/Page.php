@@ -10,13 +10,13 @@ use Kalnoy\Nestedset\NodeTrait;
 /**
  * Class Page
  * @package App\Models
- * @version November 10, 2020, 12:34 pm UTC
  *
  * @property integer $parent_id
  * @property string $title
  * @property string $slug
  * @property boolean $status
  * @property string $body
+ * @property string $type
  */
 class Page extends Model
 {
@@ -66,7 +66,8 @@ class Page extends Model
         'title' => 'string',
         'slug' => 'string',
         'status' => 'boolean',
-        'body' => 'string'
+        'body' => 'string',
+        'type' => 'string',
     ];
 
     /**
