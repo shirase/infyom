@@ -49,10 +49,7 @@
 <!-- Active Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('active', 'Status:') !!}
-    {!! Form::select('status', [
-            \App\Models\Article::STATUS_DRAFT => 'Черновик',
-            \App\Models\Article::STATUS_PUBLISH => 'Опубликовано',
-        ], null, ['class' => 'form-control']) !!}
+    {!! Form::select('status', \App\Models\Article::statuses(), null, ['class' => 'form-control']) !!}
 </div>
 
 

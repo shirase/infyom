@@ -91,4 +91,18 @@ class Article extends Model
     {
         return $this->belongsToMany(\App\Models\ArticleCategory::class, 'article_category');
     }
+
+    public static function statuses()
+    {
+        return [
+            self::STATUS_DRAFT => 'Черновик',
+            self::STATUS_PUBLISH => 'Опубликовано',
+        ];
+    }
+
+    public function statusName()
+    {
+        $statuses = static::statuses();
+        return $statuses[$this->status];
+    }
 }

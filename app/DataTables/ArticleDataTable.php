@@ -25,6 +25,12 @@ class ArticleDataTable extends DataTable
         $dataTable->editColumn('created_at', function (Article $model) {
             return $model->created_at->format('d.m.Y H:i:s');
         });
+        $dataTable->editColumn('publish_at', function (Article $model) {
+            return $model->publish_at->format('d.m.Y H:i:s');
+        });
+        $dataTable->editColumn('status', function (Article $model) {
+            return $model->statusName();
+        });
         return $dataTable->addColumn('action', 'admin.articles.datatables_actions');
     }
 
@@ -74,12 +80,12 @@ class ArticleDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'created_at',
+            'publish_at',
             'title',
             'slug',
             new Column(['data' => 'category_name', 'name' => 'category.title', 'title' => 'Категория']),
             'status',
-            'publish_at',
+            'created_at',
         ];
     }
 
