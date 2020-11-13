@@ -34,3 +34,9 @@
     <p>{{ $page->body }}</p>
 </div>
 
+<!-- Type Field -->
+<div class="form-group">
+    {!! Form::label('type', 'Type:') !!}
+    <p>{{ $page->type }}</p>
+</div>
+

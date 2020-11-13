@@ -22,6 +22,12 @@
     {!! Form::select('status', \App\Models\Page::statuses(), null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Type Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('type', 'Тип страницы:') !!}
+    {!! Form::select('type', ['' => '-'] + \App\Models\Page::types(), null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Body Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('body', 'Body:') !!}

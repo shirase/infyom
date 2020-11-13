@@ -56,7 +56,8 @@ class Page extends Model
         'title',
         'slug',
         'status',
-        'body'
+        'body',
+        'type',
     ];
 
     /**
@@ -96,5 +97,13 @@ class Page extends Model
     {
         $statuses = static::statuses();
         return $statuses[$this->status];
+    }
+
+    public static function types()
+    {
+        return [
+            'article_index' => 'Список статей',
+            'article_category' => 'Категории статей',
+        ];
     }
 }
