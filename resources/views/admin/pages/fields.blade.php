@@ -1,9 +1,3 @@
-<!-- Parent Id Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('parent_id', 'Родительская страница:') !!}
-    {!! Form::select('parent_id', ['' => '-'] + \App\Models\Page::query()->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)->get()->mapWithKeys(function($item) {return [$item['id'] => $item['title']];})->toArray(), null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Title Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('title', 'Title:') !!}
@@ -14,6 +8,12 @@
 <div class="form-group col-sm-6">
     {!! Form::label('slug', 'Slug:') !!}
     {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Parent Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('parent_id', 'Родительская страница:') !!}
+    {!! Form::select('parent_id', ['' => '-'] + \App\Models\Page::pluck('title')->toArray(), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Field -->

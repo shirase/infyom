@@ -1,5 +1,23 @@
+<!-- Title Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('title', 'Title:') !!}
+    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Slug Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('slug', 'Slug:') !!}
+    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Category Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('category_id', 'Категория:') !!}
+    {!! Form::select('category_id', ['' => '-'] + \App\Models\ArticleCategory::pluck('title')->toArray(), null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Publish At Field -->
-<div class="form-group col-sm-12 col-lg-12">
+<div class="form-group col-sm-6">
     {!! Form::label('publish_at', 'Publish At:') !!}
     {!! Form::text('publish_at', null, ['class' => 'form-control','id'=>'publish_at']) !!}
 </div>
@@ -14,18 +32,6 @@
     </script>
 @endpush
 
-<!-- Title Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('title', 'Title:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Alias Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('slug', 'Slug:') !!}
-    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Description Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('description', 'Description:') !!}
@@ -36,14 +42,6 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('body', 'Body:') !!}
     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Category Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('category_id', 'Категория:') !!}
-    {!! Form::select('category_id', \App\Models\ArticleCategory::query()->get()->mapWithKeys(function($item) {
-        return [$item['id'] => $item['title']];
-    })->prepend('-', ''), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Active Field -->
