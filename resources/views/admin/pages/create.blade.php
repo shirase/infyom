@@ -11,7 +11,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'admin.pages.store']) !!}
+                    {!! Form::model($page, ['route' => 'admin.pages.store']) !!}
 
                         @include('admin.pages.fields')
 

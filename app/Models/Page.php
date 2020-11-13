@@ -38,6 +38,10 @@ class Page extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
+    const STATUS_DRAFT = 0;
+    const STATUS_PUBLISH = 1;
+    const STATUS_HIDE = 2;
+
     public function sluggable()
     {
         return [
@@ -65,7 +69,7 @@ class Page extends Model
         'parent_id' => 'integer',
         'title' => 'string',
         'slug' => 'string',
-        'status' => 'boolean',
+        'status' => 'integer',
         'body' => 'string',
         'type' => 'string',
     ];
@@ -78,4 +82,19 @@ class Page extends Model
     public static $rules = [
         'title' => 'required',
     ];
+
+    public static function statuses()
+    {
+        return [
+            self::STATUS_DRAFT => 'Черновик',
+            self::STATUS_PUBLISH => 'Опубликовано',
+            self::STATUS_HIDE => 'Не показывать',
+        ];
+    }
+
+    public function statusName()
+    {
+        $statuses = static::statuses();
+        return $statuses[$this->status];
+    }
 }

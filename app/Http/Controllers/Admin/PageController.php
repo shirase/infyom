@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\CreatePageRequest;
 use App\Http\Requests\Admin\UpdatePageRequest;
+use App\Models\Page;
 use App\Repositories\PageRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -43,7 +44,12 @@ class PageController extends AppBaseController
      */
     public function create()
     {
-        return view('admin.pages.create');
+        /** @var Page $page */
+        $page = $this->pageRepository->makeModel();
+
+        $page->status = Page::STATUS_PUBLISH;
+
+        return view('admin.pages.create')->with('page', $page);
     }
 
     /**

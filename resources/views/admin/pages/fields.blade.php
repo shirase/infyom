@@ -1,7 +1,7 @@
 <!-- Parent Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('parent_id', 'Parent Id:') !!}
-    {!! Form::number('parent_id', null, ['class' => 'form-control']) !!}
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('parent_id', 'Родительская страница:') !!}
+    {!! Form::select('parent_id', ['' => '-'] + \App\Models\Page::query()->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)->get()->mapWithKeys(function($item) {return [$item['id'] => $item['title']];})->toArray(), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Title Field -->
@@ -19,10 +19,7 @@
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('status', 'Status:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('status', 0) !!}
-        {!! Form::checkbox('status', '1', null) !!}
-    </label>
+    {!! Form::select('status', \App\Models\Page::statuses(), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Body Field -->
