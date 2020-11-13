@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 
 /**
@@ -17,14 +18,21 @@ use Eloquent as Model;
  */
 class ArticleCategory extends Model
 {
+    use Sluggable;
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public $table = 'article_categories';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
-
-
-
 
     public $fillable = [
         'title',
@@ -51,7 +59,6 @@ class ArticleCategory extends Model
      */
     public static $rules = [
         'title' => 'required',
-        'status' => 'required'
     ];
 
     /**

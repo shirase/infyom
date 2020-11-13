@@ -29,7 +29,7 @@ class Article extends Migration
             $table->tinyInteger('status')->default(0);
             $table->string('title');
             $table->string('slug')->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->longText('body')->nullable();
 
             $table->foreign('category_id')->references('id')->on('article_categories');

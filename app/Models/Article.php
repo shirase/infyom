@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 
 /**
@@ -21,14 +22,21 @@ use Eloquent as Model;
  */
 class Article extends Model
 {
+    use Sluggable;
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public $table = 'articles';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
-
-
-
 
     public $fillable = [
         'publish_at',
@@ -62,10 +70,7 @@ class Article extends Model
      * @var array
      */
     public static $rules = [
-        'category_id' => 'required',
-        'status' => 'required',
         'title' => 'required',
-        'description' => 'required'
     ];
 
     /**
@@ -79,7 +84,7 @@ class Article extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
-    public function articleCategory1s()
+    public function categories()
     {
         return $this->belongsToMany(\App\Models\ArticleCategory::class, 'article_category');
     }
