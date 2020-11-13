@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\CreateArticleCategoryRequest;
 use App\Http\Requests\Admin\UpdateArticleCategoryRequest;
+use App\Models\ArticleCategory;
 use App\Repositories\ArticleCategoryRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -42,7 +43,11 @@ class ArticleCategoryController extends AppBaseController
      */
     public function create()
     {
-        return view('admin.article_categories.create');
+        $articleCategory = $this->articleCategoryRepository->makeModel();
+
+        $articleCategory->status = ArticleCategory::STATUS_PUBLISH;
+
+        return view('admin.article_categories.create')->with(compact('articleCategory'));
     }
 
     /**

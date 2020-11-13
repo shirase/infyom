@@ -12,7 +12,7 @@ use Kyslik\ColumnSortable\Sortable;
  *
  * @property string $title
  * @property string $slug
- * @property boolean $status
+ * @property integer $status
  */
 class ArticleCategory extends Model
 {
@@ -34,6 +34,9 @@ class ArticleCategory extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
+    const STATUS_DRAFT = 0;
+    const STATUS_PUBLISH = 1;
+
     public $fillable = [
         'title',
         'slug',
@@ -49,7 +52,7 @@ class ArticleCategory extends Model
         'id' => 'integer',
         'title' => 'string',
         'slug' => 'string',
-        'status' => 'boolean'
+        'status' => 'integer'
     ];
 
     /**
@@ -60,4 +63,18 @@ class ArticleCategory extends Model
     public static $rules = [
         'title' => 'required',
     ];
+
+    public static function statuses()
+    {
+        return [
+            self::STATUS_DRAFT => 'Черновик',
+            self::STATUS_PUBLISH => 'Опубликовано',
+        ];
+    }
+
+    public function statusName()
+    {
+        $statuses = static::statuses();
+        return $statuses[$this->status];
+    }
 }

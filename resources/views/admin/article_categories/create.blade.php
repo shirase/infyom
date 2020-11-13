@@ -11,7 +11,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'admin.article-categories.store']) !!}
+                    {!! Form::model($articleCategory, ['route' => 'admin.article-categories.store']) !!}
 
                         @include('admin.article_categories.fields')
 

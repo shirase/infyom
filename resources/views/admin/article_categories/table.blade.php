@@ -4,6 +4,7 @@
             <tr>
                 <th>@sortablelink('title')</th>
                 <th>@sortablelink('slug')</th>
+                <th>Status</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -12,6 +13,7 @@
             <tr>
                 <td>{{ $articleCategory->title }}</td>
                 <td>{{ $articleCategory->slug }}</td>
+                <td>{{ $articleCategory->statusName() }}</td>
                 <td>
                     {!! Form::open(['route' => ['admin.article-categories.destroy', $articleCategory->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

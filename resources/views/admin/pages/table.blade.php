@@ -21,7 +21,7 @@
                     {{ $page->title }}
                 </td>
                 <td>{{ $page->slug }}</td>
-                <td>{{ $page->status }}</td>
+                <td>{{ $page->statusName() }}</td>
 
                 <td>
                     {!! Form::open(['route' => ['admin.pages.destroy', $page->id], 'method' => 'delete']) !!}

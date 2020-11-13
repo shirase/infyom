@@ -10,6 +10,12 @@
     {!! Form::text('slug', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Status Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('status', 'Status:') !!}
+    {!! Form::select('status', \App\Models\Article::statuses(), null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
