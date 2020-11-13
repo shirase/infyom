@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\CreateArticleRequest;
 use App\Http\Requests\Admin\UpdateArticleRequest;
 use App\Models\Article;
 use App\Repositories\ArticleRepository;
+use Carbon\Carbon;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -40,7 +41,12 @@ class ArticleController extends AppBaseController
      */
     public function create()
     {
-        return view('admin.articles.create');
+        /** @var Article $article */
+        $article = $this->articleRepository->makeModel();
+
+        $article->publish_at = date('Y-m-d H:i:s');
+
+        return view('admin.articles.create')->with('article', $article);
     }
 
     /**

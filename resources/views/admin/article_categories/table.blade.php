@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th>@sortablelink('title')</th>
-                <th>@sortablelink('alias')</th>
+                <th>@sortablelink('slug')</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -11,7 +11,7 @@
         @foreach($articleCategories as $articleCategory)
             <tr>
                 <td>{{ $articleCategory->title }}</td>
-                <td>{{ $articleCategory->alias }}</td>
+                <td>{{ $articleCategory->slug }}</td>
                 <td>
                     {!! Form::open(['route' => ['admin.article-categories.destroy', $articleCategory->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
