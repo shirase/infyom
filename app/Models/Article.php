@@ -2,42 +2,42 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Eloquent as Model;
-use Fico7489\Laravel\EloquentJoin\Traits\EloquentJoin;
 
 /**
  * Class Article
  * @package App\Models
- * @version September 18, 2020, 10:21 am UTC
+ * @version November 13, 2020, 1:13 pm UTC
  *
  * @property \App\Models\ArticleCategory $category
- * @property \Illuminate\Database\Eloquent\Collection $articleCategories
+ * @property \Illuminate\Database\Eloquent\Collection $articleCategory1s
  * @property string|\Carbon\Carbon $publish_at
+ * @property integer $category_id
+ * @property boolean $status
  * @property string $title
- * @property string $alias
+ * @property string $slug
  * @property string $description
  * @property string $body
- * @property integer $category_id
- * @property boolean $active
- * @property Carbon $created_at
  */
 class Article extends Model
 {
-    public $table = 'articles';
 
+    public $table = 'articles';
+    
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
+
+
+
     public $fillable = [
-        'created_at',
         'publish_at',
-        'title',
-        'alias',
-        'description',
-        'body',
         'category_id',
-        'active'
+        'status',
+        'title',
+        'slug',
+        'description',
+        'body'
     ];
 
     /**
@@ -48,12 +48,12 @@ class Article extends Model
     protected $casts = [
         'id' => 'integer',
         'publish_at' => 'datetime',
-        'title' => 'string',
-        'alias' => 'string',
-        'description' => 'string',
-        'body' => 'string',
         'category_id' => 'integer',
-        'active' => 'boolean'
+        'status' => 'boolean',
+        'title' => 'string',
+        'slug' => 'string',
+        'description' => 'string',
+        'body' => 'string'
     ];
 
     /**
@@ -62,8 +62,10 @@ class Article extends Model
      * @var array
      */
     public static $rules = [
+        'category_id' => 'required',
+        'status' => 'required',
         'title' => 'required',
-        'active' => 'required'
+        'description' => 'required'
     ];
 
     /**
@@ -77,8 +79,8 @@ class Article extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
-    public function articleCategories()
+    public function articleCategory1s()
     {
-        return $this->belongsToMany(\App\Models\ArticleCategory::class, 'articles_categories');
+        return $this->belongsToMany(\App\Models\ArticleCategory::class, 'article_category');
     }
 }
