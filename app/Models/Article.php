@@ -38,6 +38,9 @@ class Article extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
+    const STATUS_DRAFT = 0;
+    const STATUS_PUBLISH = 1;
+
     public $fillable = [
         'publish_at',
         'category_id',
@@ -57,7 +60,7 @@ class Article extends Model
         'id' => 'integer',
         'publish_at' => 'datetime',
         'category_id' => 'integer',
-        'status' => 'boolean',
+        'status' => 'integer',
         'title' => 'string',
         'slug' => 'string',
         'description' => 'string',

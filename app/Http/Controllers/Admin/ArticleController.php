@@ -45,6 +45,7 @@ class ArticleController extends AppBaseController
         $article = $this->articleRepository->makeModel();
 
         $article->publish_at = date('Y-m-d H:i:s');
+        $article->status = Article::STATUS_PUBLISH;
 
         return view('admin.articles.create')->with('article', $article);
     }

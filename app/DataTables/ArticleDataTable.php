@@ -76,9 +76,9 @@ class ArticleDataTable extends DataTable
         return [
             'created_at',
             'title',
-            'alias',
+            'slug',
             new Column(['data' => 'category_name', 'name' => 'category.title', 'title' => 'Категория']),
-            'active',
+            'status',
             'publish_at',
         ];
     }

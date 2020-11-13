@@ -25,7 +25,7 @@ class Article extends Migration
             $table->id();
             $table->timestamps();
             $table->timestamp('publish_at')->nullable();
-            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned()->nullable();
             $table->tinyInteger('status')->default(0);
             $table->string('title');
             $table->string('slug')->nullable();
