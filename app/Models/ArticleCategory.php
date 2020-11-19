@@ -67,14 +67,14 @@ class ArticleCategory extends Model
     use LabelsTrait;
     public static $labels = [
         'title' => 'Название',
-        'status' => 'Сатус'
+        'status' => 'Статус'
     ];
 
     public static function statuses()
     {
         return [
-            self::STATUS_DRAFT => 'Черновик',
-            self::STATUS_PUBLISH => 'Опубликовано',
+            self::STATUS_DRAFT => __('Черновик'),
+            self::STATUS_PUBLISH => __('Опубликовано'),
         ];
     }
 

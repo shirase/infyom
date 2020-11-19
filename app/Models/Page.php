@@ -99,9 +99,9 @@ class Page extends Model
     public static function statuses()
     {
         return [
-            self::STATUS_DRAFT => 'Черновик',
-            self::STATUS_PUBLISH => 'Опубликовано',
-            self::STATUS_HIDE => 'Не показывать',
+            self::STATUS_DRAFT => __('Черновик'),
+            self::STATUS_PUBLISH => __('Опубликовано'),
+            self::STATUS_HIDE => __('Не показывать'),
         ];
     }
 
@@ -114,8 +114,8 @@ class Page extends Model
     public static function types()
     {
         return [
-            'article_index' => 'Список статей',
-            'article_category' => 'Категории статей',
+            'article_index' => __('Список статей'),
+            'article_category' => __('Категории статей'),
         ];
     }
 }
