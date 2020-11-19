@@ -30,6 +30,6 @@ class CreatePageRequest extends FormRequest
 
     public function attributes()
     {
-        return RequestHelper::modelAttributes(Page::class);
+        return RequestHelper::modelAttributeLabels(Page::class);
     }
 }

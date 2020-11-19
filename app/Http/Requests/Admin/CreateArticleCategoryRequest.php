@@ -31,6 +31,6 @@ class CreateArticleCategoryRequest extends FormRequest
 
     public function attributes()
     {
-        return RequestHelper::modelAttributes(ArticleCategory::class);
+        return RequestHelper::modelAttributeLabels(ArticleCategory::class);
     }
 }

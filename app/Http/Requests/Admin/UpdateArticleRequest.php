@@ -33,6 +33,6 @@ class UpdateArticleRequest extends FormRequest
 
     public function attributes()
     {
-        return RequestHelper::modelAttributes(Article::class);
+        return RequestHelper::modelAttributeLabels(Article::class);
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Requests\Admin;
 
 use App\Helpers\RequestHelper;
-use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Page;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePageRequest extends FormRequest
 {
@@ -33,6 +33,6 @@ class UpdatePageRequest extends FormRequest
 
     public function attributes()
     {
-        return RequestHelper::modelAttributes(Page::class);
+        return RequestHelper::modelAttributeLabels(Page::class);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 class RequestHelper
 {
-    public static function modelAttributes($modelClass)
+    public static function modelAttributeLabels($modelClass)
     {
         /** @var \Illuminate\Contracts\Translation\Loader|\Illuminate\Translation\FileLoader $translationLoader */
         $translationLoader = app('translation.loader');
