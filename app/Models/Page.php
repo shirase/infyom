@@ -84,6 +84,18 @@ class Page extends Model
         'title' => 'required',
     ];
 
+    use LabelsTrait;
+    public static $labels = [
+        'created_at' => 'Создано',
+        'updated_at' => 'Обновлено',
+        'parent_id' => 'Родитель',
+        'title' => 'Название',
+        'slug' => 'Slug',
+        'status' => 'Статус',
+        'body' => 'Содержимое',
+        'type' => 'Тип',
+    ];
+
     public static function statuses()
     {
         return [

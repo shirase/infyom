@@ -3,10 +3,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>Slug</th>
-                <th>Status</th>
-                <th colspan="3">Action</th>
+                <th>{{ \App\Models\Page::label('title') }}</th>
+                <th>{{ \App\Models\Page::label('slug') }}</th>
+                <th>{{ \App\Models\Page::label('status') }}</th>
+                <th colspan="3">@lang('Действия')</th>
             </tr>
         </thead>
         <tbody>

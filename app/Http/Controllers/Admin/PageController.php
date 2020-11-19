@@ -65,7 +65,7 @@ class PageController extends AppBaseController
 
         $page = $this->pageRepository->create($input);
 
-        Flash::success('Page saved successfully.');
+        Flash::success(__('Успешно сохранено'));
 
         return redirect(route('admin.pages.index'));
     }
@@ -82,7 +82,7 @@ class PageController extends AppBaseController
         $page = $this->pageRepository->find($id);
 
         if (empty($page)) {
-            Flash::error('Page not found');
+            Flash::error(__('Не найдено'));
 
             return redirect(route('admin.pages.index'));
         }
@@ -102,7 +102,7 @@ class PageController extends AppBaseController
         $page = $this->pageRepository->find($id);
 
         if (empty($page)) {
-            Flash::error('Page not found');
+            Flash::error(__('Не найдено'));
 
             return redirect(route('admin.pages.index'));
         }
@@ -123,14 +123,14 @@ class PageController extends AppBaseController
         $page = $this->pageRepository->find($id);
 
         if (empty($page)) {
-            Flash::error('Page not found');
+            Flash::error(__('Не найдено'));
 
             return redirect(route('admin.pages.index'));
         }
 
         $page = $this->pageRepository->update($request->all(), $id);
 
-        Flash::success('Page updated successfully.');
+        Flash::success(__('Успешно обновлено'));
 
         return redirect(route('admin.pages.index'));
     }
@@ -149,14 +149,14 @@ class PageController extends AppBaseController
         $page = $this->pageRepository->find($id);
 
         if (empty($page)) {
-            Flash::error('Page not found');
+            Flash::error(__('Не найдено'));
 
             return redirect(route('admin.pages.index'));
         }
 
         $this->pageRepository->delete($id);
 
-        Flash::success('Page deleted successfully.');
+        Flash::success(__('Успешно удалено'));
 
         return redirect(route('admin.pages.index'));
     }

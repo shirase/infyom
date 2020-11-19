@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Page
+            @lang('Страницы')
         </h1>
     </section>
     <div class="content">
@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('admin.pages.show_fields')
-                    <a href="{{ route('admin.pages.index') }}" class="btn btn-default">Back</a>
+                    <a href="{{ route('admin.pages.index') }}" class="btn btn-default">@lang('Назад')</a>
                 </div>
             </div>
         </div>
