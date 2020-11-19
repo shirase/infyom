@@ -27,4 +27,9 @@ class CreatePageRequest extends FormRequest
     {
         return Page::$rules;
     }
+
+    public function attributes()
+    {
+        return Page::$labels;
+    }
 }

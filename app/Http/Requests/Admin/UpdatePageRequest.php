@@ -26,7 +26,12 @@ class UpdatePageRequest extends FormRequest
     public function rules()
     {
         $rules = Page::$rules;
-        
+
         return $rules;
+    }
+
+    public function attributes()
+    {
+        return Page::$labels;
     }
 }

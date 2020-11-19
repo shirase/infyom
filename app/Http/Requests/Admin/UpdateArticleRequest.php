@@ -26,7 +26,12 @@ class UpdateArticleRequest extends FormRequest
     public function rules()
     {
         $rules = Article::$rules;
-        
+
         return $rules;
+    }
+
+    public function attributes()
+    {
+        return Article::$labels;
     }
 }
