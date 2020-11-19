@@ -109,9 +109,19 @@ class Page extends Model
 
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePublish($query)
+    {
+        return $query->where('status', self::STATUS_PUBLISH);
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeActive($query)
     {
-        return $query->where('status', self::STATUS_PUBLISH);
+        return $query->whereIn('status', [self::STATUS_PUBLISH, self::STATUS_HIDE]);
     }
 }
