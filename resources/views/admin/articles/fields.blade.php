@@ -13,7 +13,7 @@
 <!-- Category Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('category_id', \App\Models\Article::label('category_id')) !!}
-    {!! Form::select('category_id', ['' => '-'] + \App\Models\ArticleCategory::pluck('title')->toArray(), null, ['class' => 'form-control']) !!}
+    {!! Form::select('category_id', ['' => '-'] + \App\Models\ArticleCategory::pluck('title', 'id')->toArray(), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Publish At Field -->

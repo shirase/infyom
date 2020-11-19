@@ -7,7 +7,7 @@
 <!-- Category Id Field -->
 <div class="form-group">
     {!! Form::label('category_id', \App\Models\Article::label('category_id')) !!}
-    <p>{{ $article->category->title }}</p>
+    <p>{{ $article->category->title ?? '' }}</p>
 </div>
 
 <!-- Status Field -->

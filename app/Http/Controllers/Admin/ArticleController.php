@@ -63,7 +63,7 @@ class ArticleController extends AppBaseController
 
         $article = $this->articleRepository->create($input);
 
-        Flash::success('Article saved successfully.');
+        Flash::success(__('Успешно сохранено'));
 
         return redirect(route('admin.articles.index'));
     }
@@ -80,7 +80,7 @@ class ArticleController extends AppBaseController
         $article = $this->articleRepository->find($id);
 
         if (empty($article)) {
-            Flash::error('Article not found');
+            Flash::error(__('Не найдено'));
 
             return redirect(route('admin.articles.index'));
         }
@@ -100,7 +100,7 @@ class ArticleController extends AppBaseController
         $article = $this->articleRepository->find($id);
 
         if (empty($article)) {
-            Flash::error('Article not found');
+            Flash::error(__('Не найдено'));
 
             return redirect(route('admin.articles.index'));
         }
@@ -121,14 +121,14 @@ class ArticleController extends AppBaseController
         $article = $this->articleRepository->find($id);
 
         if (empty($article)) {
-            Flash::error('Article not found');
+            Flash::error(__('Не найдено'));
 
             return redirect(route('admin.articles.index'));
         }
 
         $article = $this->articleRepository->update($request->all(), $id);
 
-        Flash::success('Article updated successfully.');
+        Flash::success(__('Успешно обновлено'));
 
         return redirect(route('admin.articles.index'));
     }
@@ -145,14 +145,14 @@ class ArticleController extends AppBaseController
         $article = $this->articleRepository->find($id);
 
         if (empty($article)) {
-            Flash::error('Article not found');
+            Flash::error(__('Не найдено'));
 
             return redirect(route('admin.articles.index'));
         }
 
         $this->articleRepository->delete($id);
 
-        Flash::success('Article deleted successfully.');
+        Flash::success(__('Успешно удалено'));
 
         return redirect(route('admin.articles.index'));
     }

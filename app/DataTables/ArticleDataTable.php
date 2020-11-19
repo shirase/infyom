@@ -3,7 +3,6 @@
 namespace App\DataTables;
 
 use App\Models\Article;
-use Illuminate\Database\Query\Builder;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
@@ -57,7 +56,7 @@ class ArticleDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['title' => __('Действия'), 'width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
@@ -80,12 +79,12 @@ class ArticleDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'publish_at',
-            'title',
-            'slug',
-            new Column(['data' => 'category_name', 'name' => 'category.title', 'title' => 'Категория']),
-            'status',
-            'created_at',
+            new Column(['data' => 'publish_at', 'title' => Article::label('publish_at')]),
+            new Column(['data' => 'title', 'title' => Article::label('title')]),
+            new Column(['data' => 'slug', 'title' => Article::label('slug')]),
+            new Column(['data' => 'category_name', 'name' => 'category.title', 'title' => Article::label('category_id')]),
+            new Column(['data' => 'status', 'title' => Article::label('status')]),
+            new Column(['data' => 'created_at', 'title' => Article::label('created_at')]),
         ];
     }
 
