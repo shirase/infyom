@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Категории статей</h1>
+        <h1 class="pull-left">@lang('Категории статей')</h1>
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('admin.article-categories.create') }}">Добавить</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('admin.article-categories.create') }}">@lang('Добавить')</a>
         </h1>
     </section>
     <div class="content">

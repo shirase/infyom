@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Article Category
+            @lang('Категории статей')
         </h1>
    </section>
    <div class="content">

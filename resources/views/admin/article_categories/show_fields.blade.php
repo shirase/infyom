@@ -1,12 +1,12 @@
 <!-- Title Field -->
 <div class="form-group">
-    {!! Form::label('title', 'Title:') !!}
+    {!! Form::label('title', \App\Models\ArticleCategory::label('title')) !!}
     <p>{{ $articleCategory->title }}</p>
 </div>
 
-<!-- Alias Field -->
+<!-- Slug Field -->
 <div class="form-group">
-    {!! Form::label('alias', 'Alias:') !!}
-    <p>{{ $articleCategory->alias }}</p>
+    {!! Form::label('slug', \App\Models\ArticleCategory::label('slug')) !!}
+    <p>{{ $articleCategory->slug }}</p>
 </div>
 

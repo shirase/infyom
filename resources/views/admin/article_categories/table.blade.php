@@ -2,10 +2,10 @@
     <table class="table" id="articleCategories-table">
         <thead>
             <tr>
-                <th>@sortablelink('title')</th>
-                <th>@sortablelink('slug')</th>
-                <th>Status</th>
-                <th colspan="3">Action</th>
+                <th>@sortablelink('title', \App\Models\ArticleCategory::label('title'))</th>
+                <th>@sortablelink('slug', \App\Models\ArticleCategory::label('slug'))</th>
+                <th>{{ \App\Models\ArticleCategory::label('status') }}</th>
+                <th colspan="3">@lang('Действия')</th>
             </tr>
         </thead>
         <tbody>
