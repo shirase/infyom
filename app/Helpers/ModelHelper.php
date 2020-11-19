@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Str;
 
-class RequestHelper
+class ModelHelper
 {
     public static function modelAttributeLabels($modelClass)
     {

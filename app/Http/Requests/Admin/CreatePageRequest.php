@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Helpers\RequestHelper;
+use App\Helpers\ModelHelper;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Page;
 
@@ -30,6 +30,6 @@ class CreatePageRequest extends FormRequest
 
     public function attributes()
     {
-        return RequestHelper::modelAttributeLabels(Page::class);
+        return ModelHelper::modelAttributeLabels(Page::class);
     }
 }

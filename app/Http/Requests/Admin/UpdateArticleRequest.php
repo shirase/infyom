@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Helpers\RequestHelper;
+use App\Helpers\ModelHelper;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Article;
 
@@ -33,6 +33,6 @@ class UpdateArticleRequest extends FormRequest
 
     public function attributes()
     {
-        return RequestHelper::modelAttributeLabels(Article::class);
+        return ModelHelper::modelAttributeLabels(Article::class);
     }
 }
