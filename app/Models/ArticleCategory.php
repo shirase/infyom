@@ -64,12 +64,6 @@ class ArticleCategory extends Model
         'title' => 'required',
     ];
 
-    use LabelsTrait;
-    public static $labels = [
-        'title' => 'Название',
-        'status' => 'Статус'
-    ];
-
     public static function statuses()
     {
         return [

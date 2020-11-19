@@ -3,9 +3,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>{{ \App\Models\Page::label('title') }}</th>
-                <th>{{ \App\Models\Page::label('slug') }}</th>
-                <th>{{ \App\Models\Page::label('status') }}</th>
+                <th>{{ __('fields.title') }}</th>
+                <th>{{ __('fields.slug') }}</th>
+                <th>{{ __('fields.status') }}</th>
                 <th colspan="3">@lang('Действия')</th>
             </tr>
         </thead>

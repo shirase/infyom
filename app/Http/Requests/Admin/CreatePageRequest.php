@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Page;
+use Illuminate\Support\Str;
 
 class CreatePageRequest extends FormRequest
 {
@@ -30,6 +31,9 @@ class CreatePageRequest extends FormRequest
 
     public function attributes()
     {
-        return Page::$labels;
+        /** @var \Illuminate\Contracts\Translation\Loader|\Illuminate\Translation\FileLoader $translationLoader */
+        $translationLoader = app('translation.loader');
+        $fields = $translationLoader->load('ru', 'fields');
+        return $fields[Str::snake(class_basename(Page::class))] ?? [];
     }
 }

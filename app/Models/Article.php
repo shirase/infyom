@@ -76,19 +76,6 @@ class Article extends Model
         'title' => 'required',
     ];
 
-    use LabelsTrait;
-    public static $labels = [
-        'created_at' => 'Создано',
-        'updated_at' => 'Обновлено',
-        'publish_at' => 'Опубликовано',
-        'category_id' => 'Категория',
-        'status' => 'Статус',
-        'title' => 'Название',
-        'slug' => 'Slug',
-        'description' => 'Описание',
-        'body' => 'Содержимое'
-    ];
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/

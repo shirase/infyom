@@ -27,9 +27,4 @@ class CreateArticleRequest extends FormRequest
     {
         return Article::$rules;
     }
-
-    public function attributes()
-    {
-        return Article::$labels;
-    }
 }

@@ -1,24 +1,24 @@
 <!-- Title Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('title', \App\Models\Article::label('title')) !!}
+    {!! Form::label('title', __('fields.title')) !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Slug Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('slug', \App\Models\Article::label('slug')) !!}
+    {!! Form::label('slug', __('fields.slug')) !!}
     {!! Form::text('slug', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Category Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('category_id', \App\Models\Article::label('category_id')) !!}
+    {!! Form::label('category_id', __('fields.category_id')) !!}
     {!! Form::select('category_id', ['' => '-'] + \App\Models\ArticleCategory::pluck('title', 'id')->toArray(), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Publish At Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('publish_at', \App\Models\Article::label('publish_at')) !!}
+    {!! Form::label('publish_at', __('fields.publish_at')) !!}
     {!! Form::text('publish_at', null, ['class' => 'form-control','id'=>'publish_at']) !!}
 </div>
 
@@ -34,19 +34,19 @@
 
 <!-- Description Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('description', \App\Models\Article::label('description')) !!}
+    {!! Form::label('description', __('fields.description')) !!}
     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Body Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('body', \App\Models\Article::label('body')) !!}
+    {!! Form::label('body', __('fields.body')) !!}
     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status', \App\Models\Article::label('status')) !!}
+    {!! Form::label('status', __('fields.status')) !!}
     {!! Form::select('status', \App\Models\Article::statuses(), null, ['class' => 'form-control']) !!}
 </div>
 

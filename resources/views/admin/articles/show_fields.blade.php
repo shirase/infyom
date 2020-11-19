@@ -1,54 +1,54 @@
 <!-- Publish At Field -->
 <div class="form-group">
-    {!! Form::label('publish_at', \App\Models\Article::label('publish_at')) !!}
+    {!! Form::label('publish_at', __('fields.publish_at')) !!}
     <p>{{ $article->publish_at }}</p>
 </div>
 
 <!-- Category Id Field -->
 <div class="form-group">
-    {!! Form::label('category_id', \App\Models\Article::label('category_id')) !!}
+    {!! Form::label('category_id', __('fields.category_id')) !!}
     <p>{{ $article->category->title ?? '' }}</p>
 </div>
 
 <!-- Status Field -->
 <div class="form-group">
-    {!! Form::label('status', \App\Models\Article::label('status')) !!}
+    {!! Form::label('status', __('fields.status')) !!}
     <p>{{ $article->statusName() }}</p>
 </div>
 
 <!-- Title Field -->
 <div class="form-group">
-    {!! Form::label('title', \App\Models\Article::label('title')) !!}
+    {!! Form::label('title', __('fields.title')) !!}
     <p>{{ $article->title }}</p>
 </div>
 
 <!-- Slug Field -->
 <div class="form-group">
-    {!! Form::label('slug', \App\Models\Article::label('slug')) !!}
+    {!! Form::label('slug', __('fields.slug')) !!}
     <p>{{ $article->slug }}</p>
 </div>
 
 <!-- Description Field -->
 <div class="form-group">
-    {!! Form::label('description', \App\Models\Article::label('description')) !!}
+    {!! Form::label('description', __('fields.description')) !!}
     <p>{{ $article->description }}</p>
 </div>
 
 <!-- Body Field -->
 <div class="form-group">
-    {!! Form::label('body', \App\Models\Article::label('body')) !!}
+    {!! Form::label('body', __('fields.body')) !!}
     <p>{{ $article->body }}</p>
 </div>
 
 <!-- Publish At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', \App\Models\Article::label('created_at')) !!}
+    {!! Form::label('created_at', __('fields.created_at')) !!}
     <p>{{ $article->created_at }}</p>
 </div>
 
 <!-- Publish At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', \App\Models\Article::label('updated_at')) !!}
+    {!! Form::label('updated_at', __('fields.updated_at')) !!}
     <p>{{ $article->updated_at }}</p>
 </div>
 

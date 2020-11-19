@@ -29,9 +29,4 @@ class UpdateArticleCategoryRequest extends FormRequest
 
         return $rules;
     }
-
-    public function attributes()
-    {
-        return ArticleCategory::$labels;
-    }
 }

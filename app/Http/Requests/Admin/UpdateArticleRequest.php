@@ -29,9 +29,4 @@ class UpdateArticleRequest extends FormRequest
 
         return $rules;
     }
-
-    public function attributes()
-    {
-        return Article::$labels;
-    }
 }

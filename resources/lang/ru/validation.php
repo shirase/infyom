@@ -161,7 +161,7 @@ return [
     |
     */
 
-    'attributes' => [
+    'attributes' => array_merge([
         'name'                  => 'Имя',
         'username'              => 'Никнейм',
         'email'                 => 'E-Mail адрес',
@@ -191,5 +191,5 @@ return [
         'time'                  => 'Время',
         'available'             => 'Доступно',
         'size'                  => 'Размер',
-    ],
+    ], require 'fields.php'),
 ];

@@ -27,9 +27,4 @@ class CreateArticleCategoryRequest extends FormRequest
     {
         return ArticleCategory::$rules;
     }
-
-    public function attributes()
-    {
-        return ArticleCategory::$labels;
-    }
 }

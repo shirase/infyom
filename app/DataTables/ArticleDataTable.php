@@ -79,12 +79,12 @@ class ArticleDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            new Column(['data' => 'publish_at', 'title' => Article::label('publish_at')]),
-            new Column(['data' => 'title', 'title' => Article::label('title')]),
-            new Column(['data' => 'slug', 'title' => Article::label('slug')]),
-            new Column(['data' => 'category_name', 'name' => 'category.title', 'title' => Article::label('category_id')]),
-            new Column(['data' => 'status', 'title' => Article::label('status')]),
-            new Column(['data' => 'created_at', 'title' => Article::label('created_at')]),
+            new Column(['data' => 'publish_at', 'title' => __('fields.publish_at')]),
+            new Column(['data' => 'title', 'title' => __('fields.title')]),
+            new Column(['data' => 'slug', 'title' => __('fields.slug')]),
+            new Column(['data' => 'category_name', 'name' => 'category.title', 'title' => __('fields.category_id')]),
+            new Column(['data' => 'status', 'title' => __('fields.status')]),
+            new Column(['data' => 'created_at', 'title' => __('fields.created_at')]),
         ];
     }
 

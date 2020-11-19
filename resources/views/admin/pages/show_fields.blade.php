@@ -6,37 +6,37 @@
 
 <!-- Parent Id Field -->
 <div class="form-group">
-    {!! Form::label('parent_id', \App\Models\Page::label('parent_id')) !!}
+    {!! Form::label('parent_id', __('fields.parent_id')) !!}
     <p>{{ $page->parent_id }}</p>
 </div>
 
 <!-- Title Field -->
 <div class="form-group">
-    {!! Form::label('title', \App\Models\Page::label('title')) !!}
+    {!! Form::label('title', __('fields.title')) !!}
     <p>{{ $page->title }}</p>
 </div>
 
 <!-- Slug Field -->
 <div class="form-group">
-    {!! Form::label('slug', \App\Models\Page::label('slug')) !!}
+    {!! Form::label('slug', __('fields.slug')) !!}
     <p>{{ $page->slug }}</p>
 </div>
 
 <!-- Status Field -->
 <div class="form-group">
-    {!! Form::label('status', \App\Models\Page::label('status')) !!}
+    {!! Form::label('status', __('fields.status')) !!}
     <p>{{ $page->status }}</p>
 </div>
 
 <!-- Body Field -->
 <div class="form-group">
-    {!! Form::label('body', \App\Models\Page::label('body')) !!}
+    {!! Form::label('body', __('fields.body')) !!}
     <p>{{ $page->body }}</p>
 </div>
 
 <!-- Type Field -->
 <div class="form-group">
-    {!! Form::label('type', \App\Models\Page::label('type')) !!}
+    {!! Form::label('type', __('fields.page.type')) !!}
     <p>{{ $page->type }}</p>
 </div>
 

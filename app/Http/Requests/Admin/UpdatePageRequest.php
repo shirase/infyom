@@ -32,6 +32,9 @@ class UpdatePageRequest extends FormRequest
 
     public function attributes()
     {
-        return Page::$labels;
+        /** @var \Illuminate\Contracts\Translation\Loader|\Illuminate\Translation\FileLoader $translationLoader */
+        $translationLoader = app('translation.loader');
+        $fields = $translationLoader->load('ru', 'fields');
+        return $fields[Str::snake(class_basename(Page::class))] ?? [];
     }
 }
