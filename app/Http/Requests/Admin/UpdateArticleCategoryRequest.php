@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Helpers\RequestHelper;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\ArticleCategory;
 
@@ -28,5 +29,10 @@ class UpdateArticleCategoryRequest extends FormRequest
         $rules = ArticleCategory::$rules;
 
         return $rules;
+    }
+
+    public function attributes()
+    {
+        return RequestHelper::modelAttributes(ArticleCategory::class);
     }
 }

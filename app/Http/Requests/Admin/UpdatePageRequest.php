@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Helpers\RequestHelper;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Page;
 
@@ -32,9 +33,6 @@ class UpdatePageRequest extends FormRequest
 
     public function attributes()
     {
-        /** @var \Illuminate\Contracts\Translation\Loader|\Illuminate\Translation\FileLoader $translationLoader */
-        $translationLoader = app('translation.loader');
-        $fields = $translationLoader->load('ru', 'fields');
-        return $fields[Str::snake(class_basename(Page::class))] ?? [];
+        return RequestHelper::modelAttributes(Page::class);
     }
 }
