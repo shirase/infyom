@@ -82,7 +82,6 @@ class Page extends Model
      */
     public static $rules = [
         'title' => 'required',
-        'type' => 'required',
     ];
 
     public static function statuses()
@@ -106,5 +105,13 @@ class Page extends Model
             'article_index' => __('Список статей'),
             'article_category' => __('Категории статей'),
         ];
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', self::STATUS_PUBLISH);
     }
 }

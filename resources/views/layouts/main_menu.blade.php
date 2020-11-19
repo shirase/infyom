@@ -6,9 +6,11 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Link</a>
-            </li>
+            @foreach(\App\Models\Page::query()->active()->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)->get() as /* @var $page \App\Models\Page */$page)
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url($page->slug) }}">{{ $page->title }}</a>
+                </li>
+            @endforeach
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
             @if (Route::has('login'))
