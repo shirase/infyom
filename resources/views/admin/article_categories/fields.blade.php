@@ -1,18 +1,18 @@
 <!-- Title Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('title', \App\Models\ArticleCategory::label('title')) !!}
+    {!! Form::label('title', __('fields.title')) !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Alias Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('slug', \App\Models\ArticleCategory::label('slug')) !!}
+    {!! Form::label('slug', __('fields.slug')) !!}
     {!! Form::text('slug', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status', \App\Models\ArticleCategory::label('status')) !!}
+    {!! Form::label('status', __('fields.status')) !!}
     {!! Form::select('status', \App\Models\Article::statuses(), null, ['class' => 'form-control']) !!}
 </div>
 

@@ -2,9 +2,9 @@
     <table class="table" id="articleCategories-table">
         <thead>
             <tr>
-                <th>@sortablelink('title', \App\Models\ArticleCategory::label('title'))</th>
-                <th>@sortablelink('slug', \App\Models\ArticleCategory::label('slug'))</th>
-                <th>{{ \App\Models\ArticleCategory::label('status') }}</th>
+                <th>@sortablelink('title', __('fields.title'))</th>
+                <th>@sortablelink('slug', __('fields.slug'))</th>
+                <th>@lang('fields.status')</th>
                 <th colspan="3">@lang('Действия')</th>
             </tr>
         </thead>
