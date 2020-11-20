@@ -22,5 +22,4 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->middleware('verified');
 
 Route::get('/page/{slug}', 'PageController@show');
-//\App\Page\Router::add(); // URI like `/{slug}`
-\App\Page\Route::add(); // URI like `/{slug}`
+Route::page(); // URI like `/{slug}`
