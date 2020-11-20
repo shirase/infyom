@@ -4,9 +4,13 @@ namespace App\Page;
 
 use App\Http\Controllers\PageController;
 
+/**
+ * Class Router
+ * @deprecated
+ */
 class Router extends \Illuminate\Routing\Router
 {
-    public static function page()
+    public static function add()
     {
         /** @var \Illuminate\Routing\Router $router */
         $router = app('router');
