@@ -124,4 +124,13 @@ class Page extends Model
     {
         return $query->whereIn('status', [self::STATUS_PUBLISH, self::STATUS_HIDE]);
     }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSlug($query, $slug)
+    {
+        return $query->where('slug', $slug);
+    }
 }

@@ -17,7 +17,7 @@ class Route extends \Illuminate\Routing\Route
 
         $route = (new Route(['GET', 'POST'], '{slug}', [PageController::class, 'show']))
             ->setRouter($router)
-            ->setContainer(app());
+            ->setContainer(app())
         ;
         $routes->add($route);
     }
