@@ -15,8 +15,6 @@ class PageRouteMethods
             /** @var \Illuminate\Routing\Router $router */
             $router = $this;
 
-            $routes = $router->getRoutes();
-
             $route = (new Route(['GET', 'POST', 'HEAD'], '{slug}', [PageController::class, 'show']))
                 ->setRouter($router)
                 ->setContainer(app())
@@ -31,6 +29,7 @@ class PageRouteMethods
 
             $router->addWhereClausesToRoute($route);
 
+            $routes = $router->getRoutes();
             $routes->add($route);
         };
     }
