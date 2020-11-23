@@ -103,14 +103,6 @@ class Page extends Model
         return $statuses[$this->status];
     }
 
-    public static function types()
-    {
-        return [
-            'article_index' => __('Список статей'),
-            'article_category' => __('Категории статей'),
-        ];
-    }
-
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder

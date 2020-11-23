@@ -8,6 +8,6 @@
 
 @section('content')
     <div class="m-4">
-        <h2>{!! $category->title !!}</h2>
+        <h2>{{ $category->title }}</h2>
     </div>
 @endsection

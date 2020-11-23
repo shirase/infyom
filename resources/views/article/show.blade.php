@@ -8,6 +8,9 @@
 
 @section('content')
     <div class="m-4">
-        {!! $model->body !!}
+        <h2>{{ $model->title }}</h2>
+        <div>
+            {!! $model->body !!}
+        </div>
     </div>
 @endsection
