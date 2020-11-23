@@ -15,12 +15,7 @@ class PageController extends Controller
         }
 
         if ($model->type) {
-            $action = $pageType->actionByType($model->type);
-            if (!$action) {
-                return abort(500);
-            }
-
-            return call_user_func($action);
+            return abort(500);
         }
 
         return view('page.show')->with(compact('model'));
