@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Builders\ArticleBuilder;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 
@@ -19,6 +20,8 @@ use Eloquent as Model;
  * @property string $slug
  * @property string $description
  * @property string $body
+ *
+ * @method static ArticleBuilder query()
  */
 class Article extends Model
 {

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Builders\PageBuilder;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
@@ -11,12 +12,15 @@ use Kalnoy\Nestedset\NodeTrait;
  * Class Page
  * @package App\Models
  *
+ * @property integer $id
  * @property integer $parent_id
  * @property string $title
  * @property string $slug
  * @property boolean $status
  * @property string $body
  * @property string $type
+ *
+ * @method static PageBuilder query()
  */
 class Page extends Model
 {
