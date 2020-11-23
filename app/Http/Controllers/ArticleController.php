@@ -7,9 +7,9 @@ use App\Models\Page;
 
 class ArticleController extends Controller
 {
-    public function index($category_id)
+    public function index($slug)
     {
-        $category = Page::query()->where('id', $category_id)->active()->first();
+        $category = Page::query()->slug($slug)->active()->first();
         if (empty($category)) {
             return abort(404);
         }
@@ -17,9 +17,14 @@ class ArticleController extends Controller
         return view('article.index')->with(compact('category'));
     }
 
-    public function categories()
+    public function categories($slug)
     {
-        return view('article.categories');
+        $category = Page::query()->slug($slug)->active()->first();
+        if (empty($category)) {
+            return abort(404);
+        }
+
+        return view('article.categories')->with(compact('category'));
     }
 
     public function show($slug)

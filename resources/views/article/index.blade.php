@@ -8,7 +8,6 @@
 
 @section('content')
     <div class="m-4">
-        <h2>Список статей</h2>
-        {!! $category->title !!}
+        <h2>{!! $category->title !!}</h2>
     </div>
 @endsection
