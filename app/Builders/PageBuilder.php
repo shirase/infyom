@@ -10,5 +10,7 @@ use App\Models\Page;
  *
  * @method Page first()
  * @method Page[] get()
+ *
+ * @see Page
  */
 class PageBuilder extends \Illuminate\Database\Eloquent\Builder {}

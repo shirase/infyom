@@ -3,6 +3,7 @@
 namespace App\Builders;
 
 use App\Models\Article;
+use App\Models\ArticleCategory;
 
 /**
  * @method self slug(string $slug)
@@ -11,6 +12,6 @@ use App\Models\Article;
  * @method Article first()
  * @method Article[] get()
  *
- * @see Article
+ * @see ArticleCategory
  */
-class ArticleBuilder extends \Illuminate\Database\Eloquent\Builder {}
+class ArticleCategoryBuilder extends \Illuminate\Database\Eloquent\Builder {}

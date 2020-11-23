@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleCategory;
 use App\Models\Page;
+use App\Repositories\ArticleCategoryRepository;
 use App\Repositories\ArticleRepository;
 
 class ArticleController extends Controller
@@ -20,14 +22,16 @@ class ArticleController extends Controller
         return view('article.index')->with(compact('category', 'models'));
     }
 
-    public function categories($slug)
+    public function categories($slug, ArticleCategoryRepository $repository)
     {
         $category = Page::query()->slug($slug)->active()->first();
         if (empty($category)) {
             return abort(404);
         }
 
-        return view('article.categories')->with(compact('category'));
+        $models = $repository->allQuery()->active()->paginate(20);
+
+        return view('article.categories')->with(compact('category', 'models'));
     }
 
     public function show($slug)

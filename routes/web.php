@@ -21,4 +21,6 @@ Auth::routes(['verify' => true]);
 
 Route::get('/articles/{slug}', 'ArticleController@show')->name('article.show');
 
+Route::get('/article-categories/{slug}', 'ArticleController@index')->name('article.index');
+
 Route::page(); // URI like `/{slug}`
