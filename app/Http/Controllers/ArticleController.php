@@ -15,7 +15,7 @@ class ArticleController extends Controller
             return abort(404);
         }
 
-        $models = $repository->paginate(20);
+        $models = $repository->allQuery()->active()->paginate(20);
 
         return view('article.index')->with(compact('category', 'models'));
     }

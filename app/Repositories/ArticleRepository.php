@@ -2,11 +2,14 @@
 
 namespace App\Repositories;
 
+use App\Builders\ArticleBuilder;
 use App\Models\Article;
-use App\Repositories\BaseRepository;
 
 /**
  * Class ArticleRepository
+ *
+ * @method ArticleBuilder allQuery($search = [], $skip = null, $limit = null)
+ *
  * @package App\Repositories
  * @version September 18, 2020, 10:21 am UTC
 */
