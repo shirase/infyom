@@ -13,7 +13,7 @@
 
         @foreach($models as $model)
             <div class="my-4">
-                <div class="lead">{{ $model->title }}</div>
+                <p class="lead">{{ $model->title }}</p>
                 <p><a href="{{ route('article.show', ['slug' => $model->slug]) }}">Подробнее</a></p>
             </div>
         @endforeach
