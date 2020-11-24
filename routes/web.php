@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::get('/test', 'TestController@test');
+
 Route::get('/articles/{slug}', 'ArticleController@show')->name('article.show');
 
 Route::page(); // URI like `/{slug}`
