@@ -19,5 +19,7 @@
                 <p><a href="{{ route('article.show', ['slug' => $model->slug]) }}">Подробнее</a></p>
             </div>
         @endforeach
+
+        {!! $models->appends(\Request::except('page'))->render() !!}
     </div>
 @endsection
