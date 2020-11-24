@@ -27,5 +27,3 @@ Route::get('/{slug}', 'PageController@show')
     ->name('page.show')
     ->where('slug', '.*')
 ;
-
-//Route::page(); // URI like `/{slug}`

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Helpers\PageType;
 use Illuminate\Routing\Contracts\ControllerDispatcher as ControllerDispatcherContract;
+use Illuminate\Support\Facades\Route;
 
 class PageController extends Controller
 {
@@ -18,7 +19,7 @@ class PageController extends Controller
         if ($model->type) {
             $action = PageType::actionByType($model->type);
             if ($action) {
-                return app(ControllerDispatcherContract::class)->dispatch(\Route::current(), app($action[0]), $action[1]);
+                return app(ControllerDispatcherContract::class)->dispatch(Route::current(), app($action[0]), $action[1]);
             }
         }
 

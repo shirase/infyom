@@ -8,7 +8,7 @@ use App\Models\Page;
 use App\Repositories\ArticleCategoryRepository;
 use App\Repositories\ArticleRepository;
 use Illuminate\Routing\Contracts\ControllerDispatcher as ControllerDispatcherContract;
-use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
 class ArticleController extends Controller
 {
@@ -49,7 +49,7 @@ class ArticleController extends Controller
     {
         $category = ArticleCategory::query()->slug($slug)->active()->first();
         if ($category) {
-            return app(ControllerDispatcherContract::class)->dispatch(\Route::current(), $this, 'index');
+            return app(ControllerDispatcherContract::class)->dispatch(Route::current(), $this, 'index');
         }
 
         $model = Article::query()->slug($slug)->active()->first();
