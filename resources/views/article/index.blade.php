@@ -1,6 +1,7 @@
 <?php
 /**
- * @var $category \App\Models\Page
+ * @var $page \App\Models\Page
+ * @var $category \App\Models\ArticleCategory
  * @var $models \App\Models\Article[]
  */
 ?>
@@ -9,7 +10,7 @@
 
 @section('content')
     <div class="m-4">
-        <h2>{{ $category->title }}</h2>
+        <h2>{{ $category ? $category->title : $page->title }}</h2>
 
         @foreach($models as $model)
             <div class="card">

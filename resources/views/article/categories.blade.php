@@ -14,7 +14,7 @@
         @foreach($models as $model)
             <div class="card">
                 <div class="card-header">{{ $model->title }}</div>
-                <div class="card-footer"><a href="{{ route('article.index', ['slug' => $model->slug]) }}">Подробнее</a></div>
+                <div class="card-footer"><a href="{{ route('article.show', ['slug' => $model->slug]) }}">Подробнее</a></div>
             </div>
         @endforeach
     </div>

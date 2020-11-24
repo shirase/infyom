@@ -2,11 +2,14 @@
 
 namespace App\Repositories;
 
+use App\Builders\PageBuilder;
 use App\Models\Page;
-use App\Repositories\BaseRepository;
 
 /**
  * Class PageRepository
+ *
+ * @method PageBuilder allQuery($search = [], $skip = null, $limit = null)
+ *
  * @package App\Repositories
  * @version November 10, 2020, 12:34 pm UTC
 */

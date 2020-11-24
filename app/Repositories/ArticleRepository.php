@@ -26,7 +26,7 @@ class ArticleRepository extends BaseRepository
         'description',
         'body',
         'category_id',
-        'active'
+        'status'
     ];
 
     /**

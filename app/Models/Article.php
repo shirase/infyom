@@ -109,21 +109,8 @@ class Article extends Model
         return $statuses[$this->status];
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeActive($query)
+    public function newEloquentBuilder($query)
     {
-        return $query->where('status', self::STATUS_PUBLISH);
-    }
-
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeSlug($query, $slug)
-    {
-        return $query->where('slug', $slug);
+        return new ArticleBuilder($query);
     }
 }

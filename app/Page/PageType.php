@@ -3,7 +3,6 @@
 namespace App\Page;
 
 use App\Http\Controllers\ArticleController;
-use Illuminate\Support\Collection;
 
 class PageType
 {

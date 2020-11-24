@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Builders\ArticleCategoryBuilder;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 use Kyslik\ColumnSortable\Sortable;
@@ -10,9 +11,12 @@ use Kyslik\ColumnSortable\Sortable;
  * Class ArticleCategory
  * @package App\Models
  *
+ * @property int $id;
  * @property string $title
  * @property string $slug
  * @property integer $status
+ *
+ * @method static ArticleCategoryBuilder query()
  */
 class ArticleCategory extends Model
 {
@@ -78,21 +82,8 @@ class ArticleCategory extends Model
         return $statuses[$this->status];
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeActive($query)
+    public function newEloquentBuilder($query)
     {
-        return $query->where('status', self::STATUS_PUBLISH);
-    }
-
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeSlug($query, $slug)
-    {
-        return $query->where('slug', $slug);
+        return new ArticleCategoryBuilder($query);
     }
 }

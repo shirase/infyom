@@ -2,9 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Builders\ArticleBuilder;
+use App\Builders\ArticleCategoryBuilder;
 use App\Models\ArticleCategory;
-use App\Repositories\BaseRepository;
 
 /**
  * Class ArticleCategoryRepository
@@ -45,7 +44,7 @@ class ArticleCategoryRepository extends BaseRepository
      * @param array $search
      * @param null $skip
      * @param null $limit
-     * @return ArticleBuilder
+     * @return ArticleCategoryBuilder
      */
     public function allQuery($search = [], $skip = null, $limit = null)
     {

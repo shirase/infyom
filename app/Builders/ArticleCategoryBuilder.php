@@ -2,16 +2,23 @@
 
 namespace App\Builders;
 
-use App\Models\Article;
 use App\Models\ArticleCategory;
 
 /**
- * @method self slug(string $slug)
- * @method self active()
- *
- * @method Article first()
- * @method Article[] get()
+ * @method ArticleCategory first()
+ * @method ArticleCategory[] get()
  *
  * @see ArticleCategory
  */
-class ArticleCategoryBuilder extends \Illuminate\Database\Eloquent\Builder {}
+class ArticleCategoryBuilder extends \Illuminate\Database\Eloquent\Builder
+{
+    public function active()
+    {
+        return $this->where('status', ArticleCategory::STATUS_PUBLISH);
+    }
+
+    public function slug($slug)
+    {
+        return $this->where('slug', $slug);
+    }
+}
