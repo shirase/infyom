@@ -25,7 +25,7 @@
 <!-- Type Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('type', __('fields.page.type')) !!}
-    {!! Form::select('type', ['' => '-'] + app(\App\Page\PageType::class)->getTypes(), null, ['class' => 'form-control']) !!}
+    {!! Form::select('type', ['' => '-'] + \App\Helpers\PageType::getTypes(), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Body Field -->

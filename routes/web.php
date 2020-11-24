@@ -23,4 +23,9 @@ Route::get('/test', 'TestController@test');
 
 Route::get('/articles/{slug}', 'ArticleController@show')->name('article.show');
 
-Route::page(); // URI like `/{slug}`
+Route::get('/{slug}', 'PageController@show')
+    ->name('page.show')
+    ->where('slug', '.*')
+;
+
+//Route::page(); // URI like `/{slug}`

@@ -3,6 +3,7 @@
 namespace App\Builders;
 
 use App\Models\Page;
+use Kalnoy\Nestedset\QueryBuilder;
 
 /**
  * @method Page first()
@@ -10,7 +11,7 @@ use App\Models\Page;
  *
  * @see Page
  */
-class PageBuilder extends \Illuminate\Database\Eloquent\Builder
+class PageBuilder extends QueryBuilder
 {
     public function active()
     {

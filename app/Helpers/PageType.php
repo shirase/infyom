@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Page;
+namespace App\Helpers;
 
 use App\Http\Controllers\ArticleController;
 
@@ -20,13 +20,13 @@ class PageType
         ],
     ];
 
-    public function actionByType($type)
+    public static function actionByType($type)
     {
         $config = static::$types[$type];
         return $config['action'];
     }
 
-    public function getTypes()
+    public static function getTypes()
     {
         $types = [];
         foreach (self::$types as $key => $item) {
