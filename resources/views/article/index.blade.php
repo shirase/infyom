@@ -2,7 +2,7 @@
 /**
  * @var $page \App\Models\Page
  * @var $category \App\Models\ArticleCategory
- * @var $models \App\Models\Article[]
+ * @var $models \App\Models\Article[]|\Illuminate\Pagination\LengthAwarePaginator
  */
 ?>
 
