@@ -9,12 +9,12 @@
 
 @section('content')
     <div class="m-4">
-        <h2>{{ $category->title }}</h2>
+        <h1>{{ $category->title }}</h1>
 
         @foreach($models as $model)
-            <div class="card">
-                <div class="card-header">{{ $model->title }}</div>
-                <div class="card-footer"><a href="{{ route('article.show', ['slug' => $model->slug]) }}">Подробнее</a></div>
+            <div class="my-4">
+                <div class="lead">{{ $model->title }}</div>
+                <p><a href="{{ route('article.show', ['slug' => $model->slug]) }}">Подробнее</a></p>
             </div>
         @endforeach
     </div>
