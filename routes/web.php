@@ -20,9 +20,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/articles/{category}', 'ArticleController@show')->name('article.index');
-
 Route::get('/articles/{slug}', 'ArticleController@show')->name('article.show');
-
 Route::get('/articles/{category}/{slug}', 'ArticleController@show')->name('article.category.show');
 
 Route::get('/{slug}', 'PageController@show')
