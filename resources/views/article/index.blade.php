@@ -16,7 +16,7 @@
             <div class="my-4">
                 <p class="lead">{{ $model->title }}</p>
                 @if ($model->description)<p>{{ $model->description }}</p>@endif
-                <p><a href="{{ route('article.show', ['slug' => $model->slug]) }}">Подробнее</a></p>
+                <p><a href="{{ $category ? route('article.category.show', ['slug' => $model->slug, 'category' => $category->slug]) : route('article.show', ['slug' => $model->slug]) }}">Подробнее</a></p>
             </div>
         @endforeach
 

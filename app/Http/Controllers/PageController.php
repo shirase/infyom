@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Helpers\PageType;
+use Illuminate\Container\Container;
 use Illuminate\Routing\Contracts\ControllerDispatcher as ControllerDispatcherContract;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function show($slug)
+    public function show($slug, Request $request, ControllerDispatcherContract $controllerDispatcher, Container $container)
     {
         $model = Page::query()->slug($slug)->active()->first();
         if (empty($model)) {
@@ -19,7 +20,7 @@ class PageController extends Controller
         if ($model->type) {
             $action = PageType::actionByType($model->type);
             if ($action) {
-                return app(ControllerDispatcherContract::class)->dispatch(Route::current(), app($action[0]), $action[1]);
+                return $controllerDispatcher->dispatch($request->route(), $container->make($action[0]), $action[1]);
             }
         }
 

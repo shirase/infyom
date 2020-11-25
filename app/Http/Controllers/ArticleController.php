@@ -8,7 +8,7 @@ use App\Models\Page;
 use App\Repositories\ArticleCategoryRepository;
 use App\Repositories\ArticleRepository;
 use Illuminate\Routing\Contracts\ControllerDispatcher as ControllerDispatcherContract;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -35,21 +35,31 @@ class ArticleController extends Controller
 
     public function categories($slug, ArticleCategoryRepository $repository)
     {
-        $category = Page::query()->slug($slug)->active()->first();
-        if (empty($category)) {
+        $page = Page::query()->slug($slug)->active()->first();
+        if (empty($page)) {
             return abort(404);
         }
 
         $models = $repository->allQuery()->active()->paginate(20);
 
-        return view('article.categories')->with(compact('category', 'models'));
+        return view('article.categories')->with(compact('page', 'models'));
     }
 
-    public function show($slug)
+    public function show(Request $request, ControllerDispatcherContract $controllerDispatcher, $slug1, $slug2 = null)
     {
-        $category = ArticleCategory::query()->slug($slug)->active()->first();
-        if ($category) {
-            return app(ControllerDispatcherContract::class)->dispatch(Route::current(), $this, 'index');
+        if ($slug2) {
+            list($category_slug, $slug) = [$slug1, $slug2];
+        } else {
+            $slug = $slug1;
+        }
+
+        if (isset($category_slug)) {
+            $category = ArticleCategory::query()->slug($category_slug)->active()->first();
+        } else {
+            $category = ArticleCategory::query()->slug($slug)->active()->first();
+            if ($category) {
+                return $controllerDispatcher->dispatch($request->route(), $this, 'index');
+            }
         }
 
         $model = Article::query()->slug($slug)->active()->first();
@@ -57,6 +67,6 @@ class ArticleController extends Controller
             return abort(404);
         }
 
-        return view('article.show')->with(compact('model'));
+        return view('article.show')->with(compact('model', 'category'));
     }
 }
