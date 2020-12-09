@@ -31,7 +31,7 @@
 <!-- Body Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('body', __('fields.body')) !!}
-    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('body', null, ['class' => 'form-control', 'data-ckeditor']) !!}
 </div>
 
 <!-- Submit Field -->

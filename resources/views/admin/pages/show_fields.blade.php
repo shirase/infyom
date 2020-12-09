@@ -39,4 +39,3 @@
     {!! Form::label('type', __('fields.page.type')) !!}
     <p>{{ $page->type }}</p>
 </div>
-

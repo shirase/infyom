@@ -13,7 +13,7 @@
             <h2>{{ $category->title }}</h2>
         @endif
         <h1>{{ $model->title }}</h1>
-        <div class="my-4">
+        <div class="my-4" data-ckeditor>
             {!! $model->body !!}
         </div>
     </div>

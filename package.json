@@ -23,6 +23,8 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^23.1.0",
+        "@ckeditor/ckeditor5-build-inline": "^23.1.0",
         "jstree": "^3.3.10"
     }
 }
