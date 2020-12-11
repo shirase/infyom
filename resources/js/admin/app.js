@@ -1,7 +1,8 @@
 require('../bootstrap');
-
-const ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
-
-document.querySelectorAll( 'textarea[data-ckeditor]' ).forEach(function(div) {
-    ClassicEditor.create(div);
-});
+require('bootstrap3');
+require('moment');
+require('bootstrap-datetimepicker/src/js/bootstrap-datetimepicker');
+require('bootstrap-toggle');
+require('admin-lte2');
+require('icheck');
+require('select2');

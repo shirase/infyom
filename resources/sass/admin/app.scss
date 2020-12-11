@@ -5,4 +5,11 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap3/dist/css/bootstrap.css';
+
+@import "~bootstrap-toggle/css/bootstrap-toggle.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "~admin-lte2/dist/css/AdminLTE.css";
+@import "~admin-lte2/dist/css/skins/_all-skins.css";
+@import "~icheck/skins/square/_all.css";
+@import "~select2/dist/css/select2.css";
