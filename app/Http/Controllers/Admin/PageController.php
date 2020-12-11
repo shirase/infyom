@@ -160,4 +160,26 @@ class PageController extends AppBaseController
 
         return redirect(route('admin.pages.index'));
     }
+
+    public function tree(Request $request, $id = null)
+    {
+        if ($request->ajax()) {
+            $data = [];
+            $query = $this->pageRepository->allQuery()->orderBy(NestedSet::LFT);
+            if ($id != '#') {
+                $query->descendantsOf($id);
+            }
+            $pages = $query->get();
+            foreach ($pages as $page) {
+                $data[] = [
+                    'id' => $page->id,
+                    'parent' => $page->parent_id ?: '#',
+                    'text' => $page->title,
+                ];
+            }
+            return $data;
+        }
+
+        return view('admin.pages.tree');
+    }
 }
