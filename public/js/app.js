@@ -37227,6 +37227,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 
+document.querySelectorAll('div[data-ckeditor]').forEach(function (element) {
+  element.setAttribute('contenteditable', true);
+  CKEDITOR.inline(element);
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

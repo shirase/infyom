@@ -15,6 +15,7 @@
 
     @yield('content')
 
+    <script src="{{ asset('vendor/ckeditor4/ckeditor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
     @stack('scripts')
