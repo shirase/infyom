@@ -161,10 +161,22 @@ class PageController extends AppBaseController
         return redirect(route('admin.pages.index'));
     }
 
-    public function tree(Request $request, $id = null)
+    public function tree(Request $request)
     {
+        $id = $request->get('id');
+
         if ($request->ajax()) {
             $data = [];
+            $data[] = [
+                'id' => '0',
+                'parent' => '#',
+                'text' => '#',
+                'type' => 'root',
+                'state' => [
+                    'opened' => true,
+                ],
+            ];
+
             $query = $this->pageRepository->allQuery()->orderBy(NestedSet::LFT);
             if ($id != '#') {
                 $query->descendantsOf($id);
@@ -173,13 +185,83 @@ class PageController extends AppBaseController
             foreach ($pages as $page) {
                 $data[] = [
                     'id' => $page->id,
-                    'parent' => $page->parent_id ?: '#',
+                    'parent' => $page->parent_id ?: '0',
                     'text' => $page->title,
+                    'type' => 'page',
+                    'a_attr' => $page->status == Page::STATUS_PUBLISH ? [] : ['style' => 'opacity:0.5'],
                 ];
             }
             return $data;
         }
 
         return view('admin.pages.tree');
+    }
+
+    public function treeCreate(Request $request)
+    {
+        $model = $this->pageRepository->create([
+            'title' => $request->get('name'),
+            'parent_id' => $request->get('parent'),
+            'status' => Page::STATUS_HIDE,
+        ]);
+
+        return ['id' => $model->id];
+    }
+
+    public function treeRename(Request $request)
+    {
+        $model = $this->pageRepository->find($request->get('id'));
+        $model->title = $request->get('name');
+        $model->save();
+
+        return ['id' => $model->id];
+    }
+
+    public function treeDelete(Request $request)
+    {
+        $model = $this->pageRepository->find($request->get('id'));
+        $model->delete();
+
+        return ['id' => $model->id];
+    }
+
+    public function treeMove(Request $request)
+    {
+        $parent = $request->get('parent');
+        $position = $request->get('position');
+
+        $model = $this->pageRepository->find($request->get('id'));
+
+        if ($position > 0) {
+            if($node = Page::query()->orderBy(NestedSet::LFT)->where('parent_id', $parent)->where('id', '!=', $model->id)->limit(1)->offset($position-1)->first()) {
+                $model->insertAfterNode($node);
+            }
+        } else {
+            if($node = Page::query()->orderBy(NestedSet::LFT)->where('parent_id', $parent)->first()) {
+                $model->insertBeforeNode($node);
+            } elseif($node = Page::query()->where(['id'=>$parent])->first()) {
+                $model->appendToNode($node)->save();
+            }
+        }
+
+        return ['id' => $model->id];
+    }
+
+    public function treeShow(Request $request)
+    {
+        $model = $this->pageRepository->find($request->get('id'));
+        $model->status = Page::STATUS_PUBLISH;
+        $model->save();
+
+        return ['id' => $model->id];
+    }
+
+    public function treeHide(Request $request)
+    {
+        $model = $this->pageRepository->find($request->get('id'));
+        $model->status = Page::STATUS_HIDE;
+        $model->save();
+
+        return ['id' => $model->id];
     }
 }
