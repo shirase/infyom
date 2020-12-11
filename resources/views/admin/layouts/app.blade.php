@@ -132,6 +132,7 @@
     </div>
     @endif
 
+    <script src="{{ asset('vendor/ckeditor4/ckeditor.js') }}"></script>
     <script src="{{ asset('js/admin/app.js') }}"></script>
 
     @stack('scripts')

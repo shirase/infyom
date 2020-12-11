@@ -64865,6 +64865,10 @@ __webpack_require__(/*! icheck */ "./node_modules/icheck/icheck.js");
 
 __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
 
+document.querySelectorAll('textarea[data-ckeditor]').forEach(function (element) {
+  CKEDITOR.replace(element);
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
