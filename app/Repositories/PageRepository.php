@@ -44,4 +44,33 @@ class PageRepository extends BaseRepository
     {
         return Page::class;
     }
+
+    /**
+     * @return array
+     */
+    public function buildNav()
+    {
+        /** @var PageBuilder $query */
+        $query = $this->allQuery();
+        $tree = $query
+            ->publish()
+            ->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)
+            ->get()
+            ->groupBy('parent_id')
+        ;
+
+        if (!$tree->has(''))
+            return [];
+
+        $menu = [];
+
+        foreach ($tree->get('') as $page) {
+            $menu[] = [
+                'item' => $page,
+                'items' => $tree->get($page->id) ?? null,
+            ];
+        }
+
+        return $menu;
+    }
 }

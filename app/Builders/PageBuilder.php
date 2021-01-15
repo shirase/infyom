@@ -7,7 +7,7 @@ use Kalnoy\Nestedset\QueryBuilder;
 
 /**
  * @method Page first()
- * @method Page[] get()
+ * @method Page[]|\Illuminate\Database\Eloquent\Collection get()
  *
  * @see Page
  */

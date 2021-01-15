@@ -6,9 +6,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            @foreach(\App\Models\Page::query()->publish()->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)->get() as /* @var $page \App\Models\Page */$page)
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url($page->slug) }}">{{ $page->title }}</a>
+            @foreach(
+                app(\App\Repositories\PageRepository::class)->buildNav()
+                as $nav
+            )
+                <li class="nav-item {{ \Request::is($nav['item']->slug) || \Request::is($nav['item']->slug . '/*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url($nav['item']->slug) }}">{{ $nav['item']->title }}</a>
                 </li>
             @endforeach
         </ul>
