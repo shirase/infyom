@@ -50,24 +50,30 @@ class PageRepository extends BaseRepository
      */
     public function buildNav()
     {
-        /** @var PageBuilder $query */
-        $query = $this->allQuery();
-        $tree = $query
+        $level0 = $this->allQuery()
             ->publish()
+            ->where('parent_id', null)
+            ->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)
+            ->get()
+        ;
+
+        if (!$level0)
+            return [];
+
+        $level1 = $this->allQuery()
+            ->publish()
+            ->whereIn('parent_id', $level0->pluck('id'))
             ->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)
             ->get()
             ->groupBy('parent_id')
         ;
 
-        if (!$tree->has(''))
-            return [];
-
         $menu = [];
 
-        foreach ($tree->get('') as $page) {
+        foreach ($level0 as $page) {
             $menu[] = [
                 'item' => $page,
-                'items' => $tree->get($page->id) ?? null,
+                'items' => $level1->get($page->id) ?? null,
             ];
         }
 
