@@ -11,7 +11,7 @@
                 as $nav
             )
                 <li class="nav-item {{ $nav['items'] ? 'dropdown' : '' }}">
-                    <a class="nav-link {{ \Request::is($nav['item']->slug) || \Request::is($nav['item']->slug . '/*') ? 'active' : '' }} {{ $nav['items'] ? 'dropdown-toggle' : '' }}" href="{{ url($nav['item']->slug) }}">{{ $nav['item']->title }}</a>
+                    <a class="nav-link {{ \Request::is($nav['item']->slug) || \Request::is($nav['item']->slug . '/*') ? 'active' : '' }} {{ $nav['items'] ? 'dropdown-toggle' : '' }}" @if ($nav['items'])data-toggle="dropdown"@endif href="{{ !$nav['items'] ? url($nav['item']->slug) : '#' }}">{{ $nav['item']->title }}</a>
                     @if ($nav['items'])
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach ($nav['items'] as $page)
