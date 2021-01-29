@@ -11,6 +11,7 @@ return [
     'description' => 'Описание',
     'body' => 'Содержимое',
     'category_id' => 'Категория',
+    'position' => 'Позиция',
 
     'page' => [
         'type' => 'Тип',

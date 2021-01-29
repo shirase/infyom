@@ -16,6 +16,7 @@ class Article extends Migration
         Schema::create('article_categories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('position')->nullable();
             $table->string('title');
             $table->string('slug')->nullable();
             $table->tinyInteger('status')->default(0);
@@ -25,7 +26,7 @@ class Article extends Migration
             $table->id();
             $table->timestamps();
             $table->timestamp('publish_at')->nullable();
-            $table->bigInteger('category_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->string('title');
             $table->string('slug')->nullable();
@@ -36,8 +37,8 @@ class Article extends Migration
         });
 
         Schema::create('article_category', function (Blueprint $table) {
-            $table->bigInteger('article_id')->unsigned();
-            $table->bigInteger('category_id')->unsigned();
+            $table->unsignedBigInteger('article_id');
+            $table->unsignedBigInteger('category_id');
 
             $table->foreign('article_id')->references('id')->on('articles')->cascadeOnDelete();
             $table->foreign('category_id')->references('id')->on('article_categories')->cascadeOnDelete();

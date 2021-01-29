@@ -15,6 +15,7 @@ use Kyslik\ColumnSortable\Sortable;
  * @property string $title
  * @property string $slug
  * @property integer $status
+ * @property integer $position
  *
  * @method static ArticleCategoryBuilder query()
  */
@@ -31,7 +32,16 @@ class ArticleCategory extends Model
         ];
     }
 
-    public $sortable = ['title', 'slug'];
+    protected static function boot()
+    {
+        parent::boot();
+
+        ArticleCategory::creating(function ($model) {
+            $model->position = ArticleCategory::max('position') + 1;
+        });
+    }
+
+    public $sortable = ['position', 'title', 'slug'];
 
     public $table = 'article_categories';
 
@@ -54,6 +64,7 @@ class ArticleCategory extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'position' => 'integer',
         'title' => 'string',
         'slug' => 'string',
         'status' => 'integer'

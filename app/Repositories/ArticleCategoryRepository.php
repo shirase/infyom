@@ -48,6 +48,6 @@ class ArticleCategoryRepository extends BaseRepository
      */
     public function allQuery($search = [], $skip = null, $limit = null)
     {
-        return parent::allQuery($search, $skip, $limit)->sortable('title');
+        return parent::allQuery($search, $skip, $limit)->sortable('position');
     }
 }

@@ -7,9 +7,9 @@ use App\Models\ArticleCategory;
 use App\Models\Page;
 use App\Repositories\ArticleCategoryRepository;
 use App\Repositories\ArticleRepository;
+use App\Repositories\PageRepository;
 use Illuminate\Routing\Contracts\ControllerDispatcher as ControllerDispatcherContract;
 use Illuminate\Http\Request;
-use Kalnoy\Nestedset\NestedSet;
 
 class ArticleController extends Controller
 {
@@ -73,7 +73,7 @@ class ArticleController extends Controller
 
     public static function nav($pageId)
     {
-        $items = ArticleCategory::query()->get()->map(function (ArticleCategory $model) {
+        $items = app(ArticleCategoryRepository::class)->all()->map(function (ArticleCategory $model) {
             return [
                 'label' => $model->title,
                 'url' => route('article.index', ['category' => $model->slug]),
@@ -86,7 +86,7 @@ class ArticleController extends Controller
         }
 
         /** @var Page $page */
-        $page = Page::query()->find($pageId);
+        $page = app(PageRepository::class)->find($pageId);
         if ($page) {
             $items->prepend([
                 'label' => __('Все статьи'),
