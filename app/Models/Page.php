@@ -86,6 +86,8 @@ class Page extends Model
      */
     public static $rules = [
         'title' => 'required',
+        'parent_id' => 'integer',
+        'status' => 'integer',
     ];
 
     public static function statuses()

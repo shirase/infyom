@@ -67,7 +67,7 @@ class ArticleCategory extends Model
         'position' => 'integer',
         'title' => 'string',
         'slug' => 'string',
-        'status' => 'integer'
+        'status' => 'integer',
     ];
 
     /**
@@ -77,6 +77,8 @@ class ArticleCategory extends Model
      */
     public static $rules = [
         'title' => 'required',
+        'position' => 'integer',
+        'status' => 'integer',
     ];
 
     public static function statuses()

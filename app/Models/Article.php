@@ -89,6 +89,9 @@ class Article extends Model
      */
     public static $rules = [
         'title' => 'required',
+        'category_id' => 'integer',
+        'status' => 'integer',
+        'publish_at' => 'date',
     ];
 
     /**

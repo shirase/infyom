@@ -9,8 +9,9 @@
                 <th colspan="3">@lang('Действия')</th>
             </tr>
         </thead>
+        <?php $groupId = 0; ?>
         <tbody>
-        @foreach($pages as $page)
+        @foreach($pages as $i => $page)
             <?php /** @var \App\Models\Page $page */ ?>
             <tr>
                 <td>{{ $page->id }}</td>
