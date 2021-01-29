@@ -3,7 +3,7 @@ return [
     'created_at' => 'Создано',
     'updated_at' => 'Обновлено',
     'deleted_at' => 'Удалено',
-    'publish_at' => 'Создано',
+    'publish_at' => 'Опубликовано',
     'parent_id' => 'Родитель',
     'title' => 'Название',
     'slug' => 'Алиас',

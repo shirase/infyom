@@ -14,6 +14,7 @@ use Eloquent as Model;
  * @property \App\Models\ArticleCategory $category
  * @property \Illuminate\Database\Eloquent\Collection $articleCategory1s
  * @property string|\Carbon\Carbon $publish_at
+ * @property string|\Carbon\Carbon $created_at
  * @property integer $category_id
  * @property boolean $status
  * @property string $title
@@ -62,6 +63,7 @@ class Article extends Model
     protected $casts = [
         'id' => 'integer',
         'publish_at' => 'datetime',
+        'created_at' => 'datetime',
         'category_id' => 'integer',
         'status' => 'integer',
         'title' => 'string',

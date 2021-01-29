@@ -43,6 +43,7 @@ class ArticleDataTable extends DataTable
     {
         return $model->newQuery()
             ->with('category')
+            ->select(['articles.*'])
         ;
     }
 
