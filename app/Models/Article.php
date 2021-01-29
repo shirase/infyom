@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Builders\ArticleBuilder;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class Article
@@ -35,6 +36,15 @@ class Article extends Model
                 'source' => 'title'
             ]
         ];
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('only_my_columns', function (Builder $builder) {
+            $builder->select($builder->getModel()->getTable().'.*');
+        });
     }
 
     public $table = 'articles';
