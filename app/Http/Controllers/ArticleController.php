@@ -81,6 +81,10 @@ class ArticleController extends Controller
             ];
         });
 
+        if (!$items->count()) {
+            return null;
+        }
+
         /** @var Page $page */
         $page = Page::query()->find($pageId);
         if ($page) {
