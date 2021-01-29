@@ -3,10 +3,11 @@
 namespace App\Builders;
 
 use App\Models\ArticleCategory;
+use Illuminate\Support\Collection;
 
 /**
  * @method ArticleCategory first()
- * @method ArticleCategory[] get()
+ * @method ArticleCategory[]|Collection get()
  *
  * @see ArticleCategory
  */

@@ -7,15 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             @foreach(
-                app(\App\Repositories\PageRepository::class)->buildNav()
+                \App\Helpers\NavHelper::buildNav()
                 as $nav
             )
                 <li class="nav-item {{ $nav['items'] ? 'dropdown' : '' }}">
-                    <a class="nav-link {{ \Request::is($nav['item']->slug) || \Request::is($nav['item']->slug . '/*') ? 'active' : '' }} {{ $nav['items'] ? 'dropdown-toggle' : '' }}" @if ($nav['items'])data-toggle="dropdown"@endif href="{{ !$nav['items'] ? url($nav['item']->slug) : '#' }}">{{ $nav['item']->title }}</a>
+                    <a class="nav-link {{ $nav['active'] ? 'active' : '' }} {{ $nav['items'] ? 'dropdown-toggle' : '' }}" @if ($nav['items'])data-toggle="dropdown"@endif href="{{ !$nav['items'] ? $nav['url'] : '#' }}">{{ $nav['label'] }}</a>
                     @if ($nav['items'])
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach ($nav['items'] as $page)
-                                <a class="dropdown-item {{ \Request::is($page->slug) || \Request::is($page->slug . '/*') ? 'active' : '' }}" href="{{ url($page->slug) }}">{{ $page->title }}</a>
+                            @foreach ($nav['items'] as $nav2)
+                                <a class="dropdown-item {{ $nav2['active'] ? 'active' : '' }}" href="{{ $nav2['url'] }}">{{ $nav2['label'] }}</a>
                             @endforeach
                         </div>
                     @endif

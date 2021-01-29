@@ -13,6 +13,7 @@ class PageType
         self::TYPE_ARTICLE_INDEX => [
             'action' => [ArticleController::class, 'index'],
             'title' => 'Список статей',
+            'submenu' => [ArticleController::class, 'nav'],
         ],
         self::TYPE_ARTICLE_CATEGORY => [
             'action' => [ArticleController::class, 'categories'],
@@ -23,7 +24,7 @@ class PageType
     public static function actionByType($type)
     {
         $config = static::$types[$type];
-        return $config['action'];
+        return $config['action'] ?? null;
     }
 
     public static function getTypes()
@@ -33,6 +34,12 @@ class PageType
             $types[$key] = __($item['title']);
         }
         return $types;
+    }
+
+    public static function getSubmenu($type)
+    {
+        $config = static::$types[$type];
+        return $config['submenu'] ?? null;
     }
 }
 

@@ -9,6 +9,7 @@ use App\Repositories\ArticleCategoryRepository;
 use App\Repositories\ArticleRepository;
 use Illuminate\Routing\Contracts\ControllerDispatcher as ControllerDispatcherContract;
 use Illuminate\Http\Request;
+use Kalnoy\Nestedset\NestedSet;
 
 class ArticleController extends Controller
 {
@@ -68,5 +69,28 @@ class ArticleController extends Controller
         }
 
         return view('article.show')->with(compact('model', 'category'));
+    }
+
+    public static function nav($pageId)
+    {
+        $items = ArticleCategory::query()->get()->map(function (ArticleCategory $model) {
+            return [
+                'label' => $model->title,
+                'url' => route('article.index', ['category' => $model->slug]),
+                'active' => \Request::routeIs('article.index') && \Request::route('category') == $model->slug,
+            ];
+        });
+
+        /** @var Page $page */
+        $page = Page::query()->find($pageId);
+        if ($page) {
+            $items->prepend([
+                'label' => __('Все статьи'),
+                'url' => url($page->slug),
+                'active' => \Request::is($page->slug),
+            ]);
+        }
+
+        return $items;
     }
 }

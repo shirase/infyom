@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Builders\PageBuilder;
+use App\Helpers\PageType;
 use App\Models\Page;
 
 /**
@@ -43,40 +44,5 @@ class PageRepository extends BaseRepository
     public function model()
     {
         return Page::class;
-    }
-
-    /**
-     * @return array
-     */
-    public function buildNav()
-    {
-        $level0 = $this->allQuery()
-            ->publish()
-            ->where('parent_id', null)
-            ->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)
-            ->get()
-        ;
-
-        if (!$level0)
-            return [];
-
-        $level1 = $this->allQuery()
-            ->publish()
-            ->whereIn('parent_id', $level0->pluck('id'))
-            ->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)
-            ->get()
-            ->groupBy('parent_id')
-        ;
-
-        $menu = [];
-
-        foreach ($level0 as $page) {
-            $menu[] = [
-                'item' => $page,
-                'items' => $level1->get($page->id) ?? null,
-            ];
-        }
-
-        return $menu;
     }
 }
