@@ -12,6 +12,10 @@ return [
     'body' => 'Содержимое',
     'category_id' => 'Категория',
     'position' => 'Позиция',
+    'name' => 'Имя',
+    'email' => 'Email',
+    'password' => 'Пароль',
+    'action' => 'Действие',
 
     'page' => [
         'type' => 'Тип',
