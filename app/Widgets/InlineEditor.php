@@ -20,6 +20,10 @@ class InlineEditor extends AbstractWidget
      */
     public function run()
     {
+        if (!\Auth::check()) {
+            return $this->config['body'];
+        }
+
         $kcfinder = app(KCFinderService::class);
 
         return view('widgets.inline_editor', [
