@@ -28,6 +28,4 @@ Route::get('/{slug}', 'PageController@show')
     ->where('slug', '.*')
 ;
 
-Route::middleware('auth')->group(function() {
-    Route::post('/pages/store/{id}', 'PageController@store')->name('pages.store');
-});
+Route::post('/pages/store/{id}', 'PageController@store')->name('pages.store')->middleware('auth');
