@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::post('/pages/store/{id}', 'PageController@store')->name('pages.store');
+
 Route::get('/articles/{category}', 'ArticleController@show')->name('article.index');
 Route::get('/articles/{slug}', 'ArticleController@show')->name('article.show');
 Route::get('/articles/{category}/{slug}', 'ArticleController@show')->name('article.category.show');

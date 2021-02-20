@@ -2324,6 +2324,25 @@
 }
 @charset "UTF-8";
 
+.cke_editable_inline {
+  outline: 1px solid pink;
+}
+
+.cke_editable_inline.cke_focus {
+  outline: 1px solid red;
+}
+
+.cke_editable_inline:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.cke_editable_inline.cke_focus td {
+  outline: 1px dashed #AAA;
+  min-width: 8px;
+}
+
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

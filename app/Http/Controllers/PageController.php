@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Helpers\PageType;
+use App\Repositories\PageRepository;
 use Illuminate\Container\Container;
 use Illuminate\Routing\Contracts\ControllerDispatcher as ControllerDispatcherContract;
 use Illuminate\Http\Request;
@@ -25,5 +26,11 @@ class PageController extends Controller
         }
 
         return view('page.show')->with(compact('model'));
+    }
+
+    public function store($id, Request $request, PageRepository $pageRepository)
+    {
+        $pageRepository->update($request->all(), $id);
+        return __('Saved');
     }
 }

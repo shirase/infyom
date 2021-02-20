@@ -183,5 +183,7 @@
     "You may not leave a team that you created.": "Вы не можете покидать созданную Вами команду.",
     "Your email address is not verified.": "Ваш email адрес не подтвержден.",
     "Cancel": "Отмена",
-    "Back": "Назад"
+    "Back": "Назад",
+    "Success": "Успешно",
+    "Saved": "Сохранено"
 }
