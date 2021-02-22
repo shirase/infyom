@@ -47,7 +47,5 @@ class KCFinderService
             'thumbWidth' => 100,
             'thumbHeight' => 100,
         ];
-
-        //require_once '../../public/vendor/kcfinder/integration/laraveladministrator.php';
     }
 }
