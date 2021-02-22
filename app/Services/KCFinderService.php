@@ -6,6 +6,9 @@ class KCFinderService
 {
     public function __construct()
     {
+        if (!\Auth::check())
+            return false;
+
         if (!session_id())
             session_start();
 
