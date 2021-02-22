@@ -21,5 +21,6 @@ document.querySelectorAll('div[data-ckeditor]').forEach(function(element) {
         ],
         filebrowserBrowseUrl: '/vendor/kcfinder/browse.php?opener=ckeditor&type=files',
         filebrowserUploadUrl: '/vendor/kcfinder/upload.php?opener=ckeditor&type=files',
+        filebrowserUploadMethod: 'form',
     });
 })

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\KCFinderService;
 use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider
@@ -32,5 +33,7 @@ class AdminServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../vendor/sunhater/kcfinder' => public_path('vendor/kcfinder'),
         ], 'public');
+
+        $this->app->get(KCFinderService::class);
     }
 }

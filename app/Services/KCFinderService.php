@@ -6,9 +6,12 @@ class KCFinderService
 {
     public function __construct()
     {
+        if (!session_id())
+            session_start();
+
         $_SESSION['KCFINDER'] = [
             'uploadURL' => asset('storage/media'),
-            'uploadDir' => \Storage::path('app/public/media'),
+            'uploadDir' => \Storage::path('public/media'),
             'disabled' => false,
             'denyZipDownload' => true,
             'denyUpdateCheck' => true,
@@ -41,5 +44,7 @@ class KCFinderService
             'thumbWidth' => 100,
             'thumbHeight' => 100,
         ];
+
+        //require_once '../../public/vendor/kcfinder/integration/laraveladministrator.php';
     }
 }

@@ -73523,7 +73523,15 @@ __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
 __webpack_require__(/*! jstree */ "./node_modules/jstree/dist/jstree.js");
 
 document.querySelectorAll('textarea[data-ckeditor]').forEach(function (element) {
-  CKEDITOR.replace(element);
+  CKEDITOR.replace(element, {
+    extraAllowedContent: 'iframe[*];script;style;blockquote;img[*]{*}(*);div[*]{*}(*);span[*]{*}(*);p[*]{*}(*);',
+    extraPlugins: 'sourcedialog,image-uf',
+    removePlugins: 'image',
+    toolbar: [['Sourcedialog'], ['Undo', 'Redo'], ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteCode'], ['Bold', 'Italic'], ['NumberedList', 'BulletedList', 'Outdent', 'Indent'], ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'], ['Link', 'Unlink'], ['FontSize', 'Styles', 'Format'], ['Table', 'image-uf', 'Widgets'], ['RemoveFormat']],
+    filebrowserBrowseUrl: '/vendor/kcfinder/browse.php?opener=ckeditor&type=files',
+    filebrowserUploadUrl: '/vendor/kcfinder/upload.php?opener=ckeditor&type=files',
+    filebrowserUploadMethod: 'form'
+  });
 });
 
 /***/ }),
