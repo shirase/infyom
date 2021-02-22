@@ -6,10 +6,10 @@ class KCFinderService
 {
     public function __construct()
     {
-        \Session::put('KCFINDER', [
+        $_SESSION['KCFINDER'] = [
             'uploadURL' => asset('storage/media'),
             'uploadDir' => \Storage::path('app/public/media'),
-            'disabled'=>false,
+            'disabled' => false,
             'denyZipDownload' => true,
             'denyUpdateCheck' => true,
             'denyExtensionRename' => true,
@@ -29,7 +29,7 @@ class KCFinderService
                 ],
             ],
             'imageDriversPriority' => 'gd',
-            'types'=>[
+            'types' => [
                 'files' => [
                     'type' => '',
                 ],
@@ -40,6 +40,6 @@ class KCFinderService
             'thumbsDir' => '.thumbs',
             'thumbWidth' => 100,
             'thumbHeight' => 100,
-        ]);
+        ];
     }
 }
