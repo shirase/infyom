@@ -12,12 +12,12 @@ document.addEventListener('click', function(e) {
     if (e.target.hasAttribute('data-ckeditor')) {
         CKEDITOR.replace(e.target, {
             extraAllowedContent: 'iframe[*];script;style;blockquote;img[*]{*}(*);div[*]{*}(*);span[*]{*}(*);p[*]{*}(*);',
-            extraPlugins: 'sourcedialog,image-uf',
+            extraPlugins: 'sourcedialog,image-uf,autogrow,pastecode,pastefromword,pastefromgdocs,pastefromlibreoffice',
             removePlugins: 'image',
             toolbar: [
                 ['Sourcedialog'],
                 ['Undo', 'Redo'],
-                ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteCode'],
+                ['PasteCode'],
                 ['Bold', 'Italic'],
                 ['NumberedList', 'BulletedList', 'Outdent', 'Indent'],
                 ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
