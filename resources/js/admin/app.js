@@ -8,6 +8,17 @@ require('icheck');
 require('select2');
 require('jstree');
 
+import Sortable from 'sortablejs';
+document.querySelectorAll('.table tbody').forEach(el => {
+    el.querySelectorAll(':scope td:first-child').forEach(td => {
+        td.style.cursor = 'move';
+    })
+    Sortable.create(el, {
+        draggable: "tr",
+        handle: 'td:first-child',
+    })
+})
+
 document.addEventListener('click', function(e) {
     if (e.target.hasAttribute('data-ckeditor')) {
         CKEDITOR.replace(e.target, {
