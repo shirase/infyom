@@ -18,5 +18,6 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('articles', 'ArticleController', ["as" => 'admin']);
     Route::resource('article-categories', 'ArticleCategoryController', ["as" => 'admin']);
+    Route::patch('article-categories', 'ArticleCategoryController@index', ["as" => 'admin']);
     Route::resource('users', 'UserController', ["as" => 'admin']);
 });

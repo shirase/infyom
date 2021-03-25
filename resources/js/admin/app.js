@@ -9,16 +9,36 @@ require('select2');
 require('jstree');
 
 import Sortable from 'sortablejs';
-document.querySelectorAll('table[data-sortable] tbody').forEach(el => {
-    const sortableOptions = el.dataset.sortable || {};
+document.querySelectorAll('table[data-sortable]').forEach(table => {
+    const sortableOptions = table.dataset.sortable || {};
+    const tbody = table.querySelector('tbody');
 
-    el.querySelectorAll(':scope td:first-child').forEach(td => {
+    if (!table.querySelector('th[data-position] .fa-sort-asc'))
+        return;
+
+    tbody.querySelectorAll(':scope td[data-id]').forEach(td => {
         td.style.cursor = 'move';
     })
-    Sortable.create(el, {
-        ...sortableOptions,
+    Sortable.create(tbody, {
         draggable: "tr",
-        handle: 'td:first-child',
+        handle: 'td[data-id]',
+        onEnd: function(event) {
+            const tr = event.item;
+            const td = tr.querySelector('td[data-id]');
+            console.log(event.oldIndex, event.newIndex, td.dataset.id);
+            window.axios.patch('', {
+                id: td.dataset.id,
+                oldIndex: event.oldIndex,
+                newIndex: event.newIndex,
+            })
+                .then(res => {
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            ;
+        }
     })
 })
 

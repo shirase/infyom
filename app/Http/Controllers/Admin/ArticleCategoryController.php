@@ -7,9 +7,12 @@ use App\Http\Requests\Admin\UpdateArticleCategoryRequest;
 use App\Models\ArticleCategory;
 use App\Repositories\ArticleCategoryRepository;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ArticleCategoryController extends AppBaseController
 {
@@ -31,6 +34,40 @@ class ArticleCategoryController extends AppBaseController
     public function index(Request $request)
     {
         $articleCategories = $this->articleCategoryRepository->paginate(20);
+
+        if ($request->isMethod('PATCH')) {
+            if (($sort = $request->get('sort')) && $sort != 'position')
+                throw new BadRequestHttpException();
+
+            $id = $request->post('id');
+            $oldIndex = $request->post('oldIndex');
+            $newIndex = $request->post('newIndex');
+
+            $articleCategory = $this->articleCategoryRepository->find($id);
+            if (empty($articleCategory)) {
+                throw new NotFoundHttpException();
+            }
+
+            $oldPos = $articleCategory->position;
+            $newPos = $articleCategories[$newIndex]->position;
+
+            if ($newIndex > $oldIndex) {
+                $articleCategory->newQuery()
+                    ->where('position', '>=', $oldPos)
+                    ->where('position', '<=', $newPos)
+                    ->update(['position' => new Expression('IF(position!='.(int)$oldPos.', position-1, '.(int)$newPos.')')])
+                ;
+            }
+            elseif ($newIndex < $oldIndex) {
+                $articleCategory->newQuery()
+                    ->where('position', '<=', $oldPos)
+                    ->where('position', '>=', $newPos)
+                    ->update(['position' => new Expression('IF(position!='.(int)$oldPos.', position+1, '.(int)$newPos.')')])
+                ;
+            }
+
+            return null;
+        }
 
         return view('admin.article_categories.index')
             ->with('articleCategories', $articleCategories);
