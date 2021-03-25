@@ -31,7 +31,7 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', __('fields.image')) !!}
-    <p>@if($article->image_path)<img src="{{ \App\Helpers\GlideHelper::createPublicUrl($article->image_path, ['w' => 200]) }}" width="200">@endif</p>
+    <p>@if($article->image_path)<img src="{{ \App\Helpers\GlideHelper::createStorageUrl('public/' . $article->image_path, ['w' => 200]) }}" width="200">@endif</p>
 </div>
 
 <!-- Description Field -->
