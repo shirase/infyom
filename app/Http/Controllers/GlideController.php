@@ -8,7 +8,7 @@ use League\Glide\ServerFactory;
 
 class GlideController extends Controller
 {
-    public function show($path)
+    public function web($path)
     {
         /** @var FilesystemAdapter $disk */
         $disk = app('filesystem')->disk('public');
@@ -18,9 +18,25 @@ class GlideController extends Controller
             'source' => $disk->getDriver(),
             'cache' => $disk->getDriver(),
             'cache_path_prefix' => 'cache',
-            //'base_url' => 'glide',
             'base_url' => 'storage/cache',
             'cache_with_file_extensions' => true,
+        ]);
+
+        return $server->getImageResponse($path, request()->all());
+    }
+
+    public function storage($path)
+    {
+        /** @var FilesystemAdapter $disk */
+        $disk = app('filesystem')->disk('local');
+
+        $server = ServerFactory::create([
+            'response' => new LaravelResponseFactory(app('request')),
+            'source' => $disk->getDriver(),
+            'cache' => $disk->getDriver(),
+            'cache_path_prefix' => '.cache',
+            'base_url' => 'glide',
+            'cache_with_file_extensions' => false,
         ]);
 
         return $server->getImageResponse($path, request()->all());

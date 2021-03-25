@@ -22,6 +22,6 @@ class GlideHelper
             'cache_with_file_extensions' => true,
         ]);
 
-        return $server->getCachePath($path, $params) . '?' . http_build_query($params);
+        return url($server->getCachePath($path, $params) . '?' . http_build_query($params));
     }
 }

@@ -21,8 +21,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/test', 'TestController@test');
 
-Route::get('/storage/cache/{path}/{params_hash}', 'GlideController@show')->where('path', '.*?');
-//Route::get('/glide/{path}', 'GlideController@show')->where('path', '.*');
+Route::get('/storage/cache/{path}/{params_hash}', 'GlideController@web')->where('path', '.*?');
+Route::get('/glide/{path}', 'GlideController@storage')->where('path', '.*');
 
 Route::get('/articles/{category}', 'ArticleController@show')->name('article.index');
 Route::get('/articles/{slug}', 'ArticleController@show')->name('article.show');
