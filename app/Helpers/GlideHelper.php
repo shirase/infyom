@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Helpers;
 
 use Illuminate\Filesystem\FilesystemAdapter;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 
-class GlideController extends Controller
+class GlideHelper
 {
-    public function show($path)
+    public static function createSignedUrl($path, $params)
     {
         /** @var FilesystemAdapter $disk */
         $disk = app('filesystem')->disk('public');
@@ -17,12 +17,11 @@ class GlideController extends Controller
             'response' => new LaravelResponseFactory(app('request')),
             'source' => $disk->getDriver(),
             'cache' => $disk->getDriver(),
-            'cache_path_prefix' => 'cache',
-            //'base_url' => 'glide',
+            'cache_path_prefix' => 'storage/cache',
             'base_url' => 'storage/cache',
             'cache_with_file_extensions' => true,
         ]);
 
-        return $server->getImageResponse($path, request()->all());
+        return $server->getCachePath($path, $params) . '?' . http_build_query($params);
     }
 }

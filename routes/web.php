@@ -19,7 +19,10 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/glide/{path}', 'GlideController@show')->where('path', '.*');
+Route::get('/test', 'TestController@test');
+
+Route::get('/storage/cache/{path}/{params_hash}', 'GlideController@show')->where('path', '.*?');
+//Route::get('/glide/{path}', 'GlideController@show')->where('path', '.*');
 
 Route::get('/articles/{category}', 'ArticleController@show')->name('article.index');
 Route::get('/articles/{slug}', 'ArticleController@show')->name('article.show');
@@ -31,3 +34,4 @@ Route::get('/{slug}', 'PageController@show')
 ;
 
 Route::post('/pages/store/{id}', 'PageController@store')->name('pages.store')->middleware('auth');
+
