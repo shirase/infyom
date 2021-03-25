@@ -6,6 +6,14 @@ use Illuminate\Database\Query\Expression;
 
 trait PositionTrait
 {
+    public static function bootPositionTrait()
+    {
+        static::saving(function ($model) {
+            $model->position = new Expression('MAX(position)+1');
+            return true;
+        });
+    }
+
     public function positioning($oldPos, $newPos)
     {
         if ($newPos > $oldPos) {
