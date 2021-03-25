@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="articleCategories-table">
+    <table class="table" id="articleCategories-table" data-sortable>
         <thead>
             <tr>
                 <th>@sortablelink('position', __('fields.position'))</th>

@@ -9,11 +9,14 @@ require('select2');
 require('jstree');
 
 import Sortable from 'sortablejs';
-document.querySelectorAll('.table tbody').forEach(el => {
+document.querySelectorAll('table[data-sortable] tbody').forEach(el => {
+    const sortableOptions = el.dataset.sortable || {};
+
     el.querySelectorAll(':scope td:first-child').forEach(td => {
         td.style.cursor = 'move';
     })
     Sortable.create(el, {
+        ...sortableOptions,
         draggable: "tr",
         handle: 'td:first-child',
     })

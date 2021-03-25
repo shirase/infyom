@@ -77234,6 +77234,12 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sortablejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sortablejs */ "./node_modules/sortablejs/modular/sortable.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! bootstrap3 */ "./node_modules/bootstrap3/dist/js/npm.js");
@@ -77253,14 +77259,15 @@ __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
 __webpack_require__(/*! jstree */ "./node_modules/jstree/dist/jstree.js");
 
 
-document.querySelectorAll('.table tbody').forEach(function (el) {
+document.querySelectorAll('table[data-sortable] tbody').forEach(function (el) {
+  var sortableOptions = el.dataset.sortable || {};
   el.querySelectorAll(':scope td:first-child').forEach(function (td) {
     td.style.cursor = 'move';
   });
-  sortablejs__WEBPACK_IMPORTED_MODULE_0__["default"].create(el, {
+  sortablejs__WEBPACK_IMPORTED_MODULE_0__["default"].create(el, _objectSpread(_objectSpread({}, sortableOptions), {}, {
     draggable: "tr",
     handle: 'td:first-child'
-  });
+  }));
 });
 document.addEventListener('click', function (e) {
   if (e.target.hasAttribute('data-ckeditor')) {
