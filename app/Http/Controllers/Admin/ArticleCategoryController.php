@@ -35,36 +35,16 @@ class ArticleCategoryController extends AppBaseController
     {
         $articleCategories = $this->articleCategoryRepository->paginate(20);
 
-        if ($request->isMethod('PATCH')) {
+        if ($request->isMethod('PATCH') && $request->has('newIndex') && $request->has('id')) {
             if (($sort = $request->get('sort')) && $sort != 'position')
                 throw new BadRequestHttpException();
 
-            $id = $request->post('id');
-            $oldIndex = $request->post('oldIndex');
-            $newIndex = $request->post('newIndex');
-
-            $articleCategory = $this->articleCategoryRepository->find($id);
+            $articleCategory = $this->articleCategoryRepository->find($request->post('id'));
             if (empty($articleCategory)) {
                 throw new NotFoundHttpException();
             }
 
-            $oldPos = $articleCategory->position;
-            $newPos = $articleCategories[$newIndex]->position;
-
-            if ($newIndex > $oldIndex) {
-                $articleCategory->newQuery()
-                    ->where('position', '>=', $oldPos)
-                    ->where('position', '<=', $newPos)
-                    ->update(['position' => new Expression('IF(position!='.(int)$oldPos.', position-1, '.(int)$newPos.')')])
-                ;
-            }
-            elseif ($newIndex < $oldIndex) {
-                $articleCategory->newQuery()
-                    ->where('position', '<=', $oldPos)
-                    ->where('position', '>=', $newPos)
-                    ->update(['position' => new Expression('IF(position!='.(int)$oldPos.', position+1, '.(int)$newPos.')')])
-                ;
-            }
+            $articleCategory->positioning($articleCategory->position, $articleCategories[$request->post('newIndex')]->position);
 
             return null;
         }

@@ -21,7 +21,7 @@ use Kyslik\ColumnSortable\Sortable;
  */
 class ArticleCategory extends Model
 {
-    use Sluggable, Sortable;
+    use Sluggable, Sortable, PositionTrait;
 
     public function sluggable()
     {
