@@ -18473,5 +18473,9 @@ hr {
     margin-right: 0;
   }
 }
+@charset "UTF-8";
 
+.main-header .sidebar-home:before {
+  content: "\F015";
+}
 

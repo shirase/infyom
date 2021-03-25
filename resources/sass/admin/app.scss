@@ -14,3 +14,9 @@
 @import "~icheck/skins/square/_all.css";
 @import "~select2/dist/css/select2.css";
 @import "~jstree/dist/themes/default/style.css";
+
+.main-header .sidebar-home {
+    &:before {
+        content: "\f015";
+    }
+}

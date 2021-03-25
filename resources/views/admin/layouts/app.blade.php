@@ -27,6 +27,10 @@
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
+                <!-- Home button -->
+                <a href="/" class="sidebar-toggle sidebar-home">
+                    <span class="sr-only">Home</span>
+                </a>
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
