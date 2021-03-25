@@ -24,6 +24,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
+        "league/glide-laravel": "^1.0",
         "sunhater/kcfinder": "dev-master",
         "yajra/laravel-datatables": "^1.5"
     },
