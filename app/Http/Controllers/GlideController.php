@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\GlideHelper;
 use Illuminate\Filesystem\FilesystemAdapter;
+use Illuminate\Http\Request;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
+use League\Glide\Signatures\SignatureFactory;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class GlideController extends Controller
 {
-    public function web($path)
+    public function web($path, Request $request)
     {
         /** @var FilesystemAdapter $disk */
         $disk = app('filesystem')->disk('public');
+
+        $signature = SignatureFactory::create(GlideHelper::$signKey);
+        $signature->validateRequest($path, $request->all());
 
         $server = ServerFactory::create([
             'response' => new LaravelResponseFactory(app('request')),
@@ -25,10 +32,13 @@ class GlideController extends Controller
         return $server->getImageResponse($path, request()->all());
     }
 
-    public function storage($path)
+    public function storage($path, Request $request)
     {
         /** @var FilesystemAdapter $disk */
         $disk = app('filesystem')->disk('local');
+
+        $signature = SignatureFactory::create(GlideHelper::$signKey);
+        $signature->validateRequest($path, $request->all());
 
         $server = ServerFactory::create([
             'response' => new LaravelResponseFactory(app('request')),
