@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use App\Builders\ArticleCategoryBuilder;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
+use Kalnoy\Nestedset\NestedSet;
+use Kalnoy\Nestedset\NodeTrait;
 use Kyslik\ColumnSortable\Sortable;
 
 /**
@@ -15,13 +18,24 @@ use Kyslik\ColumnSortable\Sortable;
  * @property string $title
  * @property string $slug
  * @property integer $status
- * @property integer $position
+ * @property integer $_lft
  *
  * @method static ArticleCategoryBuilder query()
  */
 class ArticleCategory extends Model
 {
-    use Sluggable, Sortable, PositionTrait;
+    use Sluggable, NodeTrait, Sortable {
+        NodeTrait::replicate as replicateNode;
+        Sluggable::replicate as replicateSlug;
+    }
+
+    public function replicate(array $except = null)
+    {
+        $instance = $this->replicateNode($except);
+        (new SlugService())->slug($instance, true);
+
+        return $instance;
+    }
 
     public function sluggable()
     {
@@ -32,16 +46,7 @@ class ArticleCategory extends Model
         ];
     }
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        ArticleCategory::creating(function ($model) {
-            $model->position = ArticleCategory::max('position') + 1;
-        });
-    }
-
-    public $sortable = ['position', 'title', 'slug'];
+    public $sortable = [NestedSet::LFT, 'title', 'slug'];
 
     public $table = 'article_categories';
 
@@ -64,7 +69,6 @@ class ArticleCategory extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'position' => 'integer',
         'title' => 'string',
         'slug' => 'string',
         'status' => 'integer',
@@ -77,7 +81,6 @@ class ArticleCategory extends Model
      */
     public static $rules = [
         'title' => 'required',
-        'position' => 'integer',
         'status' => 'integer',
     ];
 

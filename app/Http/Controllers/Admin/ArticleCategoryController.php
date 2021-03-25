@@ -10,6 +10,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Http\Request;
 use Flash;
+use Kalnoy\Nestedset\NestedSet;
 use Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -35,8 +36,8 @@ class ArticleCategoryController extends AppBaseController
     {
         $articleCategories = $this->articleCategoryRepository->paginate(20);
 
-        if ($request->isMethod('PATCH') && $request->has('newIndex') && $request->has('id')) {
-            if (($sort = $request->get('sort')) && $sort != 'position')
+        if ($request->isMethod('PATCH') && $request->has('newIndex') && $request->has('oldIndex') && $request->has('id')) {
+            if ($request->get('sort') != NestedSet::LFT)
                 throw new BadRequestHttpException();
 
             $articleCategory = $this->articleCategoryRepository->find($request->post('id'));
@@ -44,7 +45,12 @@ class ArticleCategoryController extends AppBaseController
                 throw new NotFoundHttpException();
             }
 
-            $articleCategory->positioning($articleCategory->position, $articleCategories[$request->post('newIndex')]->position);
+            if ($request->post('newIndex') > $request->post('oldIndex')) {
+                $articleCategory->insertAfterNode($articleCategories[$request->post('newIndex')]);
+            }
+            elseif ($request->post('newIndex') < $request->post('oldIndex')) {
+                $articleCategory->insertBeforeNode($articleCategories[$request->post('newIndex')]);
+            }
 
             return null;
         }

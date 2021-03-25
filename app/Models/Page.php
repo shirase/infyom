@@ -37,15 +37,6 @@ class Page extends Model
         return $instance;
     }
 
-    public $table = 'pages';
-
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
-
-    const STATUS_DRAFT = 0;
-    const STATUS_PUBLISH = 1;
-    const STATUS_HIDE = 2;
-
     public function sluggable()
     {
         return [
@@ -54,6 +45,15 @@ class Page extends Model
             ]
         ];
     }
+
+    public $table = 'pages';
+
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+
+    const STATUS_DRAFT = 0;
+    const STATUS_PUBLISH = 1;
+    const STATUS_HIDE = 2;
 
     public $fillable = [
         'parent_id',

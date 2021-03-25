@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Builders\ArticleCategoryBuilder;
 use App\Models\ArticleCategory;
+use Kalnoy\Nestedset\NestedSet;
 
 /**
  * Class ArticleCategoryRepository
@@ -48,6 +49,6 @@ class ArticleCategoryRepository extends BaseRepository
      */
     public function allQuery($search = [], $skip = null, $limit = null)
     {
-        return parent::allQuery($search, $skip, $limit)->sortable('position');
+        return parent::allQuery($search, $skip, $limit)->sortable(NestedSet::LFT);
     }
 }

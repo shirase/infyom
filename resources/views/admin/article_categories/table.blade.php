@@ -2,7 +2,7 @@
     <table class="table" id="articleCategories-table" data-sortable>
         <thead>
             <tr>
-                <th data-position>@sortablelink('position', __('fields.position'))</th>
+                <th data-position>@sortablelink('_lft', __('fields.position'))</th>
                 <th>@sortablelink('title', __('fields.title'))</th>
                 <th>@sortablelink('slug', __('fields.slug'))</th>
                 <th>@lang('fields.status')</th>
@@ -10,9 +10,9 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($articleCategories as $articleCategory)
+        @foreach($articleCategories as $i => $articleCategory)
             <tr>
-                <td data-id="{{ $articleCategory->id }}">{{ $articleCategory->position }}</td>
+                <td data-id="{{ $articleCategory->id }}">{{ $i + 1 }}</td>
                 <td>{{ $articleCategory->title }}</td>
                 <td>{{ $articleCategory->slug }}</td>
                 <td>{{ $articleCategory->statusName() }}</td>

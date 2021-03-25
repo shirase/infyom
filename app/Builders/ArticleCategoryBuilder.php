@@ -4,6 +4,7 @@ namespace App\Builders;
 
 use App\Models\ArticleCategory;
 use Illuminate\Support\Collection;
+use Kalnoy\Nestedset\QueryBuilder;
 
 /**
  * @method ArticleCategory first()
@@ -11,7 +12,7 @@ use Illuminate\Support\Collection;
  *
  * @see ArticleCategory
  */
-class ArticleCategoryBuilder extends \Illuminate\Database\Eloquent\Builder
+class ArticleCategoryBuilder extends QueryBuilder
 {
     public function active()
     {

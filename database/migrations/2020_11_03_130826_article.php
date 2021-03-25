@@ -16,6 +16,7 @@ class Article extends Migration
         Schema::create('article_categories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->nestedSet();
             $table->unsignedBigInteger('position')->nullable();
             $table->string('title');
             $table->string('slug')->nullable();
@@ -33,7 +34,7 @@ class Article extends Migration
             $table->text('description')->nullable();
             $table->longText('body')->nullable();
 
-            $table->foreign('category_id')->references('id')->on('article_categories');
+            $table->foreign('category_id')->references('id')->on('article_categories')->onDelete('set null');
         });
 
         Schema::create('article_category', function (Blueprint $table) {

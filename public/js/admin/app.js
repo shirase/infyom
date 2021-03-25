@@ -77266,7 +77266,6 @@ document.querySelectorAll('table[data-sortable]').forEach(function (table) {
     onEnd: function onEnd(event) {
       var tr = event.item;
       var td = tr.querySelector('td[data-id]');
-      console.log(event.oldIndex, event.newIndex, td.dataset.id);
       window.axios.patch('', {
         id: td.dataset.id,
         oldIndex: event.oldIndex,
