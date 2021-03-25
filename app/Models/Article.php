@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property boolean $status
  * @property string $title
  * @property string $slug
+ * @property string $image_path
  * @property string $description
  * @property string $body
  *
@@ -52,15 +53,13 @@ class Article extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-    const STATUS_DRAFT = 0;
-    const STATUS_PUBLISH = 1;
-
     public $fillable = [
         'publish_at',
         'category_id',
         'status',
         'title',
         'slug',
+        'image_path',
         'description',
         'body'
     ];
@@ -78,6 +77,7 @@ class Article extends Model
         'status' => 'integer',
         'title' => 'string',
         'slug' => 'string',
+        'image_path' => 'string',
         'description' => 'string',
         'body' => 'string'
     ];
@@ -92,6 +92,7 @@ class Article extends Model
         'category_id' => 'integer',
         'status' => 'integer',
         'publish_at' => 'date',
+        'file' => 'mimes:jpg,jpeg,png,gif',
     ];
 
     /**
@@ -109,6 +110,9 @@ class Article extends Model
     {
         return $this->belongsToMany(\App\Models\ArticleCategory::class, 'article_category');
     }
+
+    const STATUS_DRAFT = 0;
+    const STATUS_PUBLISH = 1;
 
     public static function statuses()
     {

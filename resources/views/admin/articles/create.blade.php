@@ -11,7 +11,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::model($article, ['route' => 'admin.articles.store']) !!}
+                    {!! Form::model($article, ['route' => 'admin.articles.store', 'enctype' => 'multipart/form-data']) !!}
 
                         @include('admin.articles.fields')
 

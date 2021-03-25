@@ -28,6 +28,12 @@
     <p>{{ $article->slug }}</p>
 </div>
 
+<!-- Image Field -->
+<div class="form-group">
+    {!! Form::label('image', __('fields.image')) !!}
+    <p>@if($article->image_path)<img src="/storage/{{ $article->image_path }}" width="200">@endif</p>
+</div>
+
 <!-- Description Field -->
 <div class="form-group">
     {!! Form::label('description', __('fields.description')) !!}

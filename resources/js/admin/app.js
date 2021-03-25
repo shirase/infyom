@@ -1,12 +1,15 @@
 require('../bootstrap');
 require('bootstrap3');
 require('moment');
-require('bootstrap-datetimepicker/src/js/bootstrap-datetimepicker');
+require('bootstrap-datepicker/dist/js/bootstrap-datepicker');
+require('bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min');
 require('bootstrap-toggle');
 require('admin-lte2');
 require('icheck');
 require('select2');
 require('jstree');
+const flatpickr = require("flatpickr");
+window.flatpickr = flatpickr.default;
 
 import Sortable from 'sortablejs';
 document.querySelectorAll('table[data-sortable]').forEach(table => {

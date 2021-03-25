@@ -16,6 +16,7 @@ return [
     'email' => 'Email',
     'password' => 'Пароль',
     'action' => 'Действие',
+    'image' => 'Изображение',
 
     'page' => [
         'type' => 'Тип',

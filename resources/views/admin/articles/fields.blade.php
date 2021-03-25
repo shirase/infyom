@@ -24,13 +24,18 @@
 
 @push('scripts')
     <script type="text/javascript">
-        $('#publish_at').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: true,
-            sideBySide: true
-        })
+        window.flatpickr('#publish_at', {
+            enableTime: true,
+            time_24hr: true,
+        });
     </script>
 @endpush
+
+<!-- Image Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('image', __('fields.image')) !!}
+    {!! Form::file('image', ['class' => 'form-control','id'=>'image']) !!}
+</div>
 
 <!-- Description Field -->
 <div class="form-group col-sm-12 col-lg-12">

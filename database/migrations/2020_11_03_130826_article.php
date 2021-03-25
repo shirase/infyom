@@ -31,6 +31,7 @@ class Article extends Migration
             $table->tinyInteger('status')->default(0);
             $table->string('title');
             $table->string('slug')->nullable();
+            $table->string('image_path')->nullable();
             $table->text('description')->nullable();
             $table->longText('body')->nullable();
 

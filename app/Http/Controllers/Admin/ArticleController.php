@@ -60,6 +60,9 @@ class ArticleController extends AppBaseController
     public function store(CreateArticleRequest $request)
     {
         $input = $request->all();
+        if ($file = $request->file('image')) {
+            $input['image_path'] = $file->storeAs('articles',uniqid('') . '.' . $file->getExtension(), 'public');
+        }
 
         $article = $this->articleRepository->create($input);
 
@@ -126,7 +129,12 @@ class ArticleController extends AppBaseController
             return redirect(route('admin.articles.index'));
         }
 
-        $article = $this->articleRepository->update($request->all(), $id);
+        $input = $request->all();
+        if ($file = $request->file('image')) {
+            $input['image_path'] = $file->storeAs('articles',uniqid('') . '.' . $file->getClientOriginalExtension(), 'public');
+        }
+
+        $article = $this->articleRepository->update($input, $id);
 
         Flash::success(__('Успешно обновлено'));
 
