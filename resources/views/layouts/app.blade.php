@@ -9,7 +9,7 @@
     @stack('meta')
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @stack('css')
+    @yield('css')
 </head>
 
 <body>
