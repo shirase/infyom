@@ -2,10 +2,17 @@
 /**
  * @var $model \App\Models\Article
  * @var $category \App\Models\ArticleCategory
+ * @var $canonical string
  */
 ?>
 
 @extends('layouts.app')
+
+@if($canonical)
+    @push('meta')
+        <link rel="canonical" href="{{ $canonical }}" />
+    @endpush
+@endif
 
 @section('content')
     <div class="m-4">

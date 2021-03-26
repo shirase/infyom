@@ -68,7 +68,16 @@ class ArticleController extends Controller
             return abort(404);
         }
 
-        return view('article.show')->with(compact('model', 'category'));
+        if ($model->category_id) {
+            $canonical = route('article.category.show', ['slug' => $model->slug, 'category' => $model->category->slug]);
+        } else {
+            $canonical = route('article.show', ['slug' => $model->slug]);
+        }
+        if (isset($canonical) && $canonical == $request->url()) {
+            $canonical = null;
+        }
+
+        return view('article.show')->with(compact('model', 'category', 'canonical'));
     }
 
     public static function nav($pageId)
