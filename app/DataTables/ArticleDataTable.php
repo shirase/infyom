@@ -58,6 +58,9 @@ class ArticleDataTable extends DataTable
             ->minifiedAjax()
             ->addAction(['title' => __('Действия'), 'width' => '120px', 'printable' => false])
             ->parameters([
+                'language' => [
+                    'url' => '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json',
+                ],
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
