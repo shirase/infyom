@@ -3,6 +3,9 @@
 @section('content')
     <section class="content-header">
         <h1 class="pull-left">@lang('Страницы')</h1>
+        <h1 class="pull-right">
+            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('admin.pages.index') }}">@lang('Списком')</a>
+        </h1>
     </section>
     <div class="content">
         <div class="clearfix"></div>
@@ -103,7 +106,7 @@
                         }
 
                         items.update = {
-                            label:"Update",
+                            label:"{{__('Update')}}",
                             action: function(data) {
                                 var inst = $.jstree.reference(data.reference),
                                     obj = inst.get_node(data.reference);
@@ -111,12 +114,12 @@
                             }
                         };
 
-                        items.rename.label = "Rename";
-                        items.create.label = "Create";
-                        items.remove.label = "Delete";
+                        items.rename.label = "{{__('Rename')}}";
+                        items.create.label = "{{__('Create')}}";
+                        items.remove.label = "{{__('Delete')}}";
 
                         items.show = {
-                            label:"Show",
+                            label:"{{__('Show')}}",
                             action: function(data) {
                                 var inst = $.jstree.reference(data.reference),
                                     obj = inst.get_node(data.reference);
@@ -134,7 +137,7 @@
                         };
 
                         items.hide = {
-                            label:"Hide",
+                            label:"{{__('Hide')}}",
                             action: function(data) {
                                 var inst = $.jstree.reference(data.reference),
                                     obj = inst.get_node(data.reference);

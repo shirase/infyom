@@ -7,7 +7,7 @@ Route::group(['prefix' => 'admin'], function () {
         return view('admin::welcome');
     });
 
-    Route::get('pages/tree', 'PageController@tree', ["as" => 'admin']);
+    Route::get('pages/tree', 'PageController@tree', ["as" => 'admin'])->name('admin.pages.tree');
     Route::get('pages/tree/create', 'PageController@treeCreate', ["as" => 'admin']);
     Route::get('pages/tree/show', 'PageController@treeShow', ["as" => 'admin']);
     Route::get('pages/tree/hide', 'PageController@treeHide', ["as" => 'admin']);

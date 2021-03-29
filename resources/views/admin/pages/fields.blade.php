@@ -13,7 +13,7 @@
 <!-- Parent Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('parent_id', __('fields.parent_id')) !!}
-    {!! Form::select('parent_id', ['' => '-'] + \App\Models\Page::pluck('title', 'id')->toArray(), null, ['class' => 'form-control']) !!}
+    {!! Form::select('parent_id', ['' => '-'] + \App\Models\Page::query()->where('id', '!=', $page->id)->pluck('title', 'id')->toArray(), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Field -->

@@ -1,6 +1,6 @@
 
 <li class="{{ Request::is('admin/pages*') ? 'active' : '' }}">
-    <a href="{{ route('admin.pages.index') }}"><i class="fa fa-edit"></i><span>Страницы</span></a>
+    <a href="{{ route('admin.pages.tree') }}"><i class="fa fa-edit"></i><span>Страницы</span></a>
 </li>
 
 <li class="treeview menu-open {{ Request::is('admin/articles*') ? 'active' : '' }}">
