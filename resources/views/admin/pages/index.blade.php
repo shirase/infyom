@@ -15,7 +15,17 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                    @include('admin.pages.table')
+                <div class="search_container">
+                    <form method="get" class="form-inline pull-right">
+                        <div class="form-group">
+                            <label>@lang('Search')</label>
+                            <input class="form-control" type="text" name="q" value="{{ Request::query('q') }}">
+                        </div>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+
+                @include('admin.pages.table')
             </div>
         </div>
         <div class="text-center">

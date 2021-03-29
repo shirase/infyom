@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Builders\PageBuilder;
 use App\Http\Requests\Admin\CreatePageRequest;
 use App\Http\Requests\Admin\UpdatePageRequest;
 use App\Models\Page;
@@ -31,7 +32,15 @@ class PageController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $pages = $this->pageRepository->allQuery()->orderBy(NestedSet::LFT)->get();
+        $pages = $this->pageRepository->allQuery()->where(function($query) use ($request) {
+            /** @var PageBuilder $query */
+            if ($q = $request->query('q')) {
+                $query
+                    ->where('title', 'like', '%' . trim($q) . '%')
+                    ->orWhere('slug', 'like', '%' . trim($q) . '%')
+                ;
+            }
+        })->orderBy(NestedSet::LFT)->get();
 
         return view('admin.pages.index')
             ->with('pages', $pages);
