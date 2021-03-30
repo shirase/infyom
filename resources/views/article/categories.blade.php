@@ -7,6 +7,8 @@
 
 @extends('layouts.app')
 
+@section('title', $page->title)
+
 @section('content')
     <div class="m-4">
         <h1>{{ $page->title }}</h1>

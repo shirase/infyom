@@ -8,6 +8,8 @@
 
 @extends('layouts.app')
 
+@section('title', $model->title)
+
 @if($canonical)
     @push('meta')
         <link rel="canonical" href="{{ $canonical }}" />

@@ -8,6 +8,8 @@
 
 @extends('layouts.app')
 
+@section('title', $category ? $category->title : $page->title)
+
 @section('content')
     <div class="m-4">
         <h1>{{ $category ? $category->title : $page->title }}</h1>
