@@ -14,7 +14,14 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->app->bind('datatables.html', function () {
+            return $this->app->make(\Yajra\DataTables\Html\Builder::class)
+                ->parameters([
+                    'language' => [
+                        'url' => '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json',
+                    ],
+                ]);
+        });
     }
 
     /**
@@ -35,14 +42,5 @@ class AdminServiceProvider extends ServiceProvider
         ], 'public');
 
         $this->app->get(KCFinderService::class);
-
-        $this->app->bind('datatables.html', function () {
-            return $this->app->make(\Yajra\DataTables\Html\Builder::class)
-                ->parameters([
-                    'language' => [
-                        'url' => '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json',
-                    ],
-                ]);
-        });
     }
 }
