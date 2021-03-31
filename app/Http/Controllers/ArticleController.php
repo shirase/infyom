@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\View\Composers\BreadcrumbsComposer;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\Page;
@@ -27,6 +28,10 @@ class ArticleController extends Controller
 
         if ($category) {
             $query->category($category->id);
+
+            BreadcrumbsComposer::setBreadcrumbs([
+                ['label' => $category->title]
+            ]);
         }
 
         $models = $query->paginate(20);
@@ -67,6 +72,22 @@ class ArticleController extends Controller
         if (empty($model)) {
             return abort(404);
         }
+
+        $breadcrumbs = [
+            ['label' => $model->title]
+        ];
+        if (isset($category) && $category) {
+            array_unshift($breadcrumbs, [
+                'label' => $category->title,
+                'url' => route('article.index', ['category' => $category->slug])
+            ]);
+        } else {
+            array_unshift($breadcrumbs, [
+                'label' => __('Статьи'),
+                'url' => url('/articles')
+            ]);
+        }
+        BreadcrumbsComposer::setBreadcrumbs($breadcrumbs);
 
         if ($model->category_id) {
             $canonical = route('article.category.show', ['slug' => $model->slug, 'category' => $model->category->slug]);

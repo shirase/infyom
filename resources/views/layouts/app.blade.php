@@ -15,6 +15,8 @@
 <body>
     @yield('main_menu', View::make('layouts.main_menu'))
 
+    @yield('breadcrumb', View::make('layouts.breadcrumbs'))
+
     @yield('content')
 
     <script src="{{ asset('vendor/ckeditor4/ckeditor.js') }}"></script>

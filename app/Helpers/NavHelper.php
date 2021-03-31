@@ -2,8 +2,10 @@
 
 namespace App\Helpers;
 
+use App\Http\View\Composers\BreadcrumbsComposer;
 use App\Models\Page;
 use Illuminate\Support\Collection;
+use Kalnoy\Nestedset\NodeTrait;
 
 class NavHelper
 {
@@ -66,5 +68,30 @@ class NavHelper
         }
 
         return $nav;
+    }
+
+    /**
+     * @param Page $model
+     */
+    public static function buildBreadcrumbs($model)
+    {
+        if (!$model)
+            return null;
+
+        $breadcrumbs = [
+            ['label' => $model->title]
+        ];
+        while ($parentId = $model->getParentId()) {
+            /** @var Page $model */
+            $model = $model->newQuery()->find($parentId);
+            if (!$model)
+                break;
+            array_unshift($breadcrumbs, [
+                'label' => $model->title,
+                'url' => url($model->slug),
+            ]);
+        }
+
+        BreadcrumbsComposer::setBreadcrumbs($breadcrumbs);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\NavHelper;
 use App\Models\Page;
 use App\Helpers\PageType;
 use App\Repositories\PageRepository;
@@ -17,6 +18,8 @@ class PageController extends Controller
         if (empty($model)) {
             return abort(404);
         }
+
+        NavHelper::buildBreadcrumbs($model);
 
         if ($model->type) {
             $action = PageType::actionByType($model->type);
