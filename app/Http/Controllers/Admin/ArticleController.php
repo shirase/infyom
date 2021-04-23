@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DataTables\ArticleDataTable;
-use App\Http\Requests\Admin;
 use App\Http\Requests\Admin\CreateArticleRequest;
 use App\Http\Requests\Admin\UpdateArticleRequest;
 use App\Models\Article;
 use App\Repositories\ArticleRepository;
-use Carbon\Carbon;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -29,7 +27,7 @@ class ArticleController extends AppBaseController
      * @param ArticleDataTable $articleDataTable
      * @return Response
      */
-    public function index(ArticleDataTable $articleDataTable, Article $article)
+    public function index(ArticleDataTable $articleDataTable)
     {
         return $articleDataTable->render('admin.articles.index');
     }
@@ -38,6 +36,7 @@ class ArticleController extends AppBaseController
      * Show the form for creating a new Article.
      *
      * @return Response
+     * @throws \Exception
      */
     public function create()
     {
@@ -64,7 +63,7 @@ class ArticleController extends AppBaseController
             $input['image_path'] = $file->storeAs('articles',uniqid('') . '.' . $file->getExtension(), 'public');
         }
 
-        $article = $this->articleRepository->create($input);
+        $this->articleRepository->create($input);
 
         Flash::success(__('Успешно сохранено'));
 
@@ -134,7 +133,7 @@ class ArticleController extends AppBaseController
             $input['image_path'] = $file->storeAs('articles',uniqid('') . '.' . $file->getClientOriginalExtension(), 'public');
         }
 
-        $article = $this->articleRepository->update($input, $id);
+        $this->articleRepository->update($input, $id);
 
         Flash::success(__('Успешно обновлено'));
 
@@ -144,9 +143,10 @@ class ArticleController extends AppBaseController
     /**
      * Remove the specified Article from storage.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
+     * @throws \Exception
      */
     public function destroy($id)
     {

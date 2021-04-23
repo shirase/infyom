@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\UpdateArticleCategoryRequest;
 use App\Models\ArticleCategory;
 use App\Repositories\ArticleCategoryRepository;
 use App\Http\Controllers\AppBaseController;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Http\Request;
 use Flash;
 use Kalnoy\Nestedset\NestedSet;
@@ -63,6 +62,7 @@ class ArticleCategoryController extends AppBaseController
      * Show the form for creating a new ArticleCategory.
      *
      * @return Response
+     * @throws \Exception
      */
     public function create()
     {
@@ -84,7 +84,7 @@ class ArticleCategoryController extends AppBaseController
     {
         $input = $request->all();
 
-        $articleCategory = $this->articleCategoryRepository->create($input);
+        $this->articleCategoryRepository->create($input);
 
         Flash::success(__('Сохранено успешно'));
 
@@ -149,7 +149,7 @@ class ArticleCategoryController extends AppBaseController
             return redirect(route('admin.article-categories.index'));
         }
 
-        $articleCategory = $this->articleCategoryRepository->update($request->all(), $id);
+        $this->articleCategoryRepository->update($request->all(), $id);
 
         Flash::success(__('Обновлено успешно'));
 

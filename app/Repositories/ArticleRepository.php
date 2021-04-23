@@ -9,6 +9,7 @@ use App\Models\Article;
  * Class ArticleRepository
  *
  * @method ArticleBuilder allQuery($search = [], $skip = null, $limit = null)
+ * @method Article find($id, $columns = ['*'])
  *
  * @package App\Repositories
  * @version September 18, 2020, 10:21 am UTC

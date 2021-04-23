@@ -9,6 +9,9 @@ use Kalnoy\Nestedset\NestedSet;
 /**
  * Class ArticleCategoryRepository
  *
+ * @method ArticleCategory find($id, $columns = ['*'])
+ * @method ArticleCategory makeModel()
+ *
  * @package App\Repositories
  * @version September 16, 2020, 1:43 pm UTC
 */
