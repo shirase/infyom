@@ -5,7 +5,7 @@ namespace App\Helpers;
 use App\Http\View\Composers\BreadcrumbsComposer;
 use App\Models\Page;
 use Illuminate\Support\Collection;
-use Kalnoy\Nestedset\NodeTrait;
+use Kalnoy\Nestedset\NestedSet;
 
 class NavHelper
 {
@@ -14,7 +14,7 @@ class NavHelper
         $level0 = Page::query()
             ->publish()
             ->where('parent_id', null)
-            ->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)
+            ->orderBy(NestedSet::LFT)
             ->get()
         ;
 
@@ -25,7 +25,7 @@ class NavHelper
         $level1 = Page::query()
             ->publish()
             ->whereIn('parent_id', $level0->pluck('id'))
-            ->orderBy(\Kalnoy\Nestedset\NestedSet::LFT)
+            ->orderBy(NestedSet::LFT)
             ->get()
             ->groupBy('parent_id')
         ;
