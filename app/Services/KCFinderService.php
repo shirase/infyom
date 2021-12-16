@@ -2,15 +2,19 @@
 
 namespace App\Services;
 
+use Illuminate\Contracts\Auth\Factory as Auth;
+
 class KCFinderService
 {
-    public function __construct()
+    public function __construct(Auth $auth)
     {
-        if (!\Auth::check())
-            return false;
-
         if (!session_id())
             session_start();
+
+        unset($_SESSION['KCFINDER']);
+
+        if (!$auth->guard()->check())
+            return false;
 
         $_SESSION['KCFINDER'] = [
             'uploadURL' => asset('storage/media'),

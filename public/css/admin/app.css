@@ -6920,8 +6920,7 @@ button.close {
 :root .fa-rotate-270,
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical {
-  -webkit-filter: none;
-          filter: none;
+  filter: none;
 }
 .fa-stack {
   position: relative;
@@ -17485,6 +17484,9 @@ hr {
   /* disable selection/Copy of UIWebView */
   -webkit-touch-callout: none;
   /* disable the IOS popup when long-press on a link */
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
 }
 .vakata-context {
   display: none;
@@ -17537,6 +17539,9 @@ hr {
 .vakata-context li > a:focus {
   outline: 0;
 }
+.vakata-context .vakata-context-no-icons {
+  margin-left: 0;
+}
 .vakata-context .vakata-context-hover > a {
   position: relative;
   background-color: #e8eff7;
@@ -17565,8 +17570,7 @@ hr {
   box-shadow: 0 0 0;
 }
 .vakata-context .vakata-contextmenu-disabled > a > i {
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 .vakata-context li > a > i {
   text-decoration: none;
@@ -19699,8 +19703,6 @@ span.flatpickr-weekday {
             transform: translate3d(0, 0, 0);
   }
 }
-@charset "UTF-8";
-
 .main-header .sidebar-home:before {
   content: "\F015";
 }
