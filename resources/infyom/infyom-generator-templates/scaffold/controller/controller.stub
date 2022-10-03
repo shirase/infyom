@@ -29,7 +29,8 @@ class $MODEL_NAME$Controller extends AppBaseController
      */
     public function index(Request $request)
     {
-        $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->$RENDER_TYPE$;
+        $query = $this->$MODEL_NAME_CAMEL$Repository->allQuery($request->input());
+        $$MODEL_NAME_PLURAL_CAMEL$ = $query->orderBy('id')->paginate(100)->appends($request->except('page'));
 
         return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index')
             ->with('$MODEL_NAME_PLURAL_CAMEL$', $$MODEL_NAME_PLURAL_CAMEL$);
