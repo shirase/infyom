@@ -2438,6 +2438,17 @@
   height: 100%;
 }
 
+.editor-panel {
+  margin: 0.8em 0;
+  text-align: right;
+  color: pink;
+  font-size: 90%;
+}
+
+.editor-panel a {
+  color: pink;
+}
+
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

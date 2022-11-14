@@ -24,7 +24,7 @@
                 <p class="lead">{{ $model->title }}</p>
                     @can(\App\Repositories\RoleRepository::ADMINISTRATOR)
                     <div class="editor-panel">
-                        <a class="j-frame-dialog link-update" data-type="update" href="{{ route('admin.articles.edit', [$model->id]) }}" target="_blank">Изменить</a>
+                        <a class="j-frame-dialog" data-type="update" href="{{ route('admin.articles.edit', [$model->id]) }}" target="_blank">Изменить</a>
                     </div>
                     @endcan
                 @if ($model->description)<p>{{ $model->description }}</p>@endif
