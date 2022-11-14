@@ -37272,6 +37272,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 
+__webpack_require__(/*! ./body */ "./resources/js/body.js");
+
 __webpack_require__(/*! ./frame_dialog */ "./resources/js/frame_dialog.js");
 
 document.querySelectorAll('div[data-ckeditor]').forEach(function (element) {
@@ -37286,6 +37288,15 @@ document.querySelectorAll('div[data-ckeditor]').forEach(function (element) {
     filebrowserUploadMethod: 'form'
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/body.js":
+/*!******************************!*\
+  !*** ./resources/js/body.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
 window.bodyFixed = function () {
   var body = $(document.body);
