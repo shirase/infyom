@@ -4,17 +4,21 @@ namespace App\Repositories;
 
 class RoleRepository
 {
+    public const ADMINISTRATOR = 'administrator';
+    public const MANAGER = 'manager';
+    public const USER = 'user';
+
     private $data = [
         [
-            'role' => 'administrator',
+            'role' => self::ADMINISTRATOR,
             'name' => 'administrator',
         ],
         [
-            'role' => 'manager',
+            'role' => self::MANAGER,
             'name' => 'manager',
         ],
         [
-            'role' => 'user',
+            'role' => self::USER,
             'name' => 'user',
         ],
     ];

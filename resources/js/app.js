@@ -1,5 +1,6 @@
 require('./bootstrap');
 require('bootstrap');
+require('./frame_dialog')
 
 document.querySelectorAll('div[data-ckeditor]').forEach(function(element) {
     element.setAttribute('contenteditable', true);

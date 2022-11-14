@@ -37272,6 +37272,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 
+__webpack_require__(/*! ./frame_dialog */ "./resources/js/frame_dialog.js");
+
 document.querySelectorAll('div[data-ckeditor]').forEach(function (element) {
   element.setAttribute('contenteditable', true);
   CKEDITOR.inline(element, {
@@ -37341,6 +37343,69 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/frame_dialog.js":
+/*!**************************************!*\
+  !*** ./resources/js/frame_dialog.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).on('click', '.j-frame-dialog, .j_frame_dialog', function (event) {
+  event.preventDefault();
+  var el = $(this);
+  bodyFixed();
+  var iframePopup = $('<div class="iframe_popup" />').appendTo('body');
+  var iframePopupIframe = $('<div class="iframe_popup__iframe" />').appendTo(iframePopup);
+  var close = $('<a class="iframe_popup__close" />').appendTo(iframePopupIframe);
+  close.click(function () {
+    iframePopup.remove();
+    $(document).off('action');
+    bodyUnfixed();
+  });
+  var expand = $('<a class="iframe_popup__expand" />').appendTo(iframePopupIframe);
+  expand.click(function () {
+    iframePopup.toggleClass('iframe_popup__expanded');
+  });
+  var iframe = $('<iframe />').appendTo(iframePopupIframe);
+  iframe.on('iframeloading', function () {
+    iframe.contents().find('body').addClass('is-frame-dialog');
+    iframe.contents().find('body').addClass('sidebar-collapse');
+  });
+  iframe.attr('src', el.attr('href'));
+  var dataType = el.data('type');
+
+  if (dataType == 'index') {
+    close.click(function () {
+      location.reload();
+    });
+  }
+
+  if (dataType == 'create') {
+    $(document).on('action.Create', function () {
+      location.reload();
+    });
+  }
+
+  if (dataType == 'update') {
+    $(document).on('action.Delete', function () {
+      location.reload();
+    });
+    $(document).on('action.Update', function () {
+      location.reload();
+    });
+  }
+});
+
+function receiveMessage(event) {
+  if (event.data.action) {
+    $(document).trigger('action.' + event.data.action);
+  }
+}
+
+window.addEventListener("message", receiveMessage, false);
 
 /***/ }),
 
