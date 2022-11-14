@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\User;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -25,8 +24,13 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = User::$rules;
-        
+        $id = $this->route('user');
+        $rules = [
+          'name'     => 'required',
+          'email'    => 'required|email|unique:users,email,'.$id,
+          'password' => 'confirmed'
+        ];
+
         return $rules;
     }
 }

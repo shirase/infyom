@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\CreateUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
+use App\Models\UserRole;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -58,6 +59,8 @@ class UserController extends AppBaseController
 
         $user = $this->userRepository->create($input);
 
+        $this->userRepository->updateRoles($user->id, array_keys($input['roles']));
+
         Flash::success('User saved successfully.');
 
         return redirect(route('admin.users.index'));
@@ -100,7 +103,9 @@ class UserController extends AppBaseController
             return redirect(route('admin.users.index'));
         }
 
-        return view('admin.users.edit')->with('user', $user);
+        $userRoles = UserRole::query()->where('user_id', $user->id)->get()->keyBy('role')->toArray();
+
+        return view('admin.users.edit')->with('user', $user)->with('userRoles', $userRoles);
     }
 
     /**
@@ -121,7 +126,15 @@ class UserController extends AppBaseController
             return redirect(route('admin.users.index'));
         }
 
-        $user = $this->userRepository->update($request->all(), $id);
+        $input = $request->all();
+        if (!empty($input['password'])) {
+            $input['password'] = \Hash::make($input['password']);
+        } else {
+            unset($input['password']);
+        }
+        $user = $this->userRepository->update($input, $id);
+
+        $this->userRepository->updateRoles($user->id, array_keys($input['roles'] ?? []));
 
         Flash::success('User updated successfully.');
 

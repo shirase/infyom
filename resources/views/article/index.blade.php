@@ -22,6 +22,11 @@
                     </div>
                 @endif
                 <p class="lead">{{ $model->title }}</p>
+                    @can('')
+                    <div class="editor-panel">
+                        <a class="j-frame-dialog link-update" data-type="update" href="" target="_blank">Изменить</a>
+                    </div>
+                    @endcan
                 @if ($model->description)<p>{{ $model->description }}</p>@endif
                 <p><a href="{{ $category ? route('article.category.show', ['slug' => $model->slug, 'category' => $category->slug]) : route('article.show', ['slug' => $model->slug]) }}">Подробнее</a></p>
             </div>

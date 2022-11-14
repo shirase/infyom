@@ -15,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
+
         $this->app->singleton(KCFinderService::class);
     }
 

@@ -3,7 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use App\Models\UserRole;
 use App\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserRepository
@@ -40,5 +42,19 @@ class UserRepository extends BaseRepository
     public function model()
     {
         return User::class;
+    }
+
+    public function updateRoles($id, $roles)
+    {
+        foreach ($roles as $role) {
+            $model = UserRole::query()->where('user_id', $id)->where('role', $role)->first();
+            if (!$model) {
+                $model = new UserRole();
+                $model->user_id = $id;
+                $model->role = $role;
+                $model->save();
+            }
+        }
+        UserRole::query()->where('user_id', $id)->whereNotIn('role', $roles)->delete();
     }
 }

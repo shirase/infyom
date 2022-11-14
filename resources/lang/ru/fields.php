@@ -15,6 +15,7 @@ return [
     'name' => 'Имя',
     'email' => 'Email',
     'password' => 'Пароль',
+    'password_confirmation' => 'Подтверждение пароля',
     'action' => 'Действие',
     'image' => 'Изображение',
 
