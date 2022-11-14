@@ -8,7 +8,8 @@
 
 @extends('layouts.app')
 
-@section('title', $model->title)
+@section('title', $model->title . ' | ' . 'Статьи')
+@section('description', rtrim(trim($model->title), ' .,?!') . '. Подробнее в статье на нашем сайте.')
 
 @if($canonical)
     @push('meta')

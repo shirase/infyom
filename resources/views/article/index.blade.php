@@ -8,7 +8,8 @@
 
 @extends('layouts.app')
 
-@section('title', $category ? $category->title : $page->title)
+@section('title', ($category ? $category->title : $page->title) . ' | ' . 'Список статей')
+@section('description', rtrim(trim($category ? $category->title : $page->title), ' .,?!') . '. Список статей на нашем сайте.')
 
 @section('content')
     <div class="m-4">

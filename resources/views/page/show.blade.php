@@ -6,7 +6,8 @@
 
 @extends('layouts.app')
 
-@section('title', $model->title)
+@section('title', $model->title . ' | ' . config('app.name'))
+@section('description', rtrim(trim($model->title), ' .,?!') . '. Подробнее на нашем сайте.')
 
 @section('content')
     <div class="m-4">
