@@ -34,4 +34,5 @@ Route::get('/{slug}', 'PageController@show')
 ;
 
 Route::post('/pages/store/{id}', 'PageController@store')->name('pages.store')->middleware('auth');
+Route::post('/articles/store/{id}', 'ArticleController@store')->name('articles.store')->middleware('auth');
 

@@ -37285,6 +37285,20 @@ document.querySelectorAll('div[data-ckeditor]').forEach(function (element) {
   });
 });
 
+window.bodyFixed = function () {
+  var body = $(document.body);
+  var y = $(window).scrollTop();
+  body.addClass('fixed');
+  $('#body_scroll').scrollTop(y);
+};
+
+window.bodyUnfixed = function () {
+  var body = $(document.body);
+  var y = $('#body_scroll').scrollTop();
+  body.removeClass('fixed');
+  $(window).scrollTop(y);
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

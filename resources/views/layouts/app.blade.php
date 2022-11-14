@@ -13,11 +13,15 @@
 </head>
 
 <body>
-    @yield('main_menu', View::make('layouts.main_menu'))
+    <div id="body_scroll">
+        <div id="body_wrap">
+            @yield('main_menu', View::make('layouts.main_menu'))
 
-    @yield('breadcrumb', View::make('layouts.breadcrumbs'))
+            @yield('breadcrumb', View::make('layouts.breadcrumbs'))
 
-    @yield('content')
+            @yield('content')
+        </div>
+    </div>
 
     <script src="{{ asset('vendor/ckeditor4/ckeditor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>

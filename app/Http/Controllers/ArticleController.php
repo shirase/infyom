@@ -127,4 +127,10 @@ class ArticleController extends Controller
 
         return $items;
     }
+
+    public function store($id, Request $request, ArticleRepository $articleRepository)
+    {
+        $articleRepository->update($request->all(), $id);
+        return __('Saved');
+    }
 }
