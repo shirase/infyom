@@ -20,4 +20,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('article-categories', 'ArticleCategoryController', ["as" => 'admin']);
     Route::patch('article-categories', 'ArticleCategoryController@index', ["as" => 'admin']);
     Route::resource('users', 'UserController', ["as" => 'admin']);
+
+    Route::post('data/store/{key}', 'DataController@store', ["as" => 'admin'])->name('admin.data.store');
+    Route::get('data/string/{key}', 'DataController@string', ["as" => 'admin'])->name('admin.data.string');
 });

@@ -16,3 +16,5 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('resources/js/admin/app.js', 'public/js/admin')
     .sass('resources/sass/admin/app.scss', 'public/css/admin');
+
+mix.js('resources/js/admin/vue.js', 'public/js/admin');

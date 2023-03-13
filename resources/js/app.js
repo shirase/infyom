@@ -1,5 +1,5 @@
 require('./bootstrap');
-require('bootstrap');
+require('bootstrap4');
 require('./body')
 require('./frame_dialog')
 
